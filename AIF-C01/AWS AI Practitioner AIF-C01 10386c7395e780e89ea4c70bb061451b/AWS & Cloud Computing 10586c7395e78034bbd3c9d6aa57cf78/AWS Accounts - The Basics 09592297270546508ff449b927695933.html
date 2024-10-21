@@ -1,0 +1,685 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>AWS Accounts - The Basics</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="09592297-2705-4650-8ff4-49b927695933" class="page sans"><header><h1 class="page-title">AWS Accounts - The Basics</h1><p class="page-description"></p></header><div class="page-body"><p id="07cae1b1-f182-48ba-81de-3c55050efea8" class=""><span style="border-bottom:0.05em solid">Ref</span>: <a href="https://www.youtube.com/watch?v=FuoVr7O3uBg">https://www.youtube.com/watch?v=FuoVr7O3uBg</a> <strong>or</strong> <a href="https://learn.cantrill.io/courses/1820301/lectures/41301458">https://learn.cantrill.io/courses/1820301/lectures/41301458</a> [ASSOCIATESHARED]</p><ul id="d4894961-f8c6-4e6d-b9e3-446f62cd4b11" class="toggle"><li><details open=""><summary><span style="border-bottom:0.05em solid">Summary</span></summary><p id="66861e2c-5d47-401d-91e3-0950275156ff" class="">AWS accounts are not only required to use AWS services, they are also one of the most important tools available to a solutions architect. An AWS account is a container for identities and AWS resources. Simple systems might run from only one AWS account, but complex systems usually run on many accounts. An AWS account has a name, a unique email address and a credit card. By default, only the account root user has full access, and external access is denied. AWS accounts should be disposable (don&#x27;t put all your business in one single account, generally).</p></details></li></ul><ul id="9aa20804-098c-4839-b526-371b906d5dd2" class="toggle"><li><details open=""><summary><span style="border-bottom:0.05em solid">Contents:</span></summary><nav id="f9d4e19f-1395-4a96-81eb-98064be0b9f3" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#23eaa99c-08aa-4c50-8104-b720ce8a002b">AWS Account - Key Concepts</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#45234d1c-3769-4419-8f50-075404f215ed">DEMO: Creating an AWS account (GENERAL account)</a></div></nav></details></li></ul><hr id="11686c73-95e7-806a-9b73-fe8e662ac213"/><h2 id="23eaa99c-08aa-4c50-8104-b720ce8a002b" class="">AWS Account - Key Concepts</h2><ul id="bb7c9519-1c74-453b-a639-ceccfbb91c1c" class="block-color-teal_background bulleted-list"><li style="list-style-type:disc">🔧 <strong>AWS account = container for identities and AWS resources</strong><ul id="81fdbf20-3fa7-48b9-809e-7ac96073a513" class="block-color-orange_background bulleted-list"><li style="list-style-type:circle">‼️ AWS <strong>accounts ≠ users</strong> inside accounts!!!</li></ul><ul id="6ef36140-c670-4940-9e0f-651497d0d579" class="bulleted-list"><li style="list-style-type:circle"><strong><span style="border-bottom:0.05em solid">Identity</span></strong><strong> = a user, app or thing that can login to an AWS account</strong><ul id="0f04a768-c78d-42b0-84cb-f620c3a0e950" class="bulleted-list"><li style="list-style-type:square">❗ Exception: IAM groups (will be explained later)</li></ul></li></ul><ul id="bcc43103-8033-4269-98ca-017eb18ae943" class="bulleted-list"><li style="list-style-type:circle"><strong><span style="border-bottom:0.05em solid">AWS resource</span></strong><strong> = piece of SW, HW or data that runs or is stored in the AWS cloud/infrastructure, and belongs to an AWS account</strong><ul id="acdc7cfe-33e7-4a89-89ff-93a320706eb7" class="bulleted-list"><li style="list-style-type:square">e.g. a virtual server (EC2 instance), an S3 bucket that contains images…</li></ul><ul id="8d96d4b1-e2b3-4c13-b1b7-02403da5a5d1" class="bulleted-list"><li style="list-style-type:square">Official AWS definition → AWS resource = “an entity that you can work with”</li></ul><ul id="b1cd8f8a-1927-4961-bbab-a278b9234b2e" class="bulleted-list"><li style="list-style-type:square"><strong>An AWS resource is created inside an AWS service</strong><ul id="5b03d96c-8fbd-4d70-9618-300c24ffb6f5" class="bulleted-list"><li style="list-style-type:disc">e.g. S3 is a service, an S3 bucket is a resource created inside S3</li></ul></li></ul></li></ul><ul id="b33998c1-60e7-4f94-8f22-7edc0f029a8b" class="block-color-blue_background bulleted-list"><li style="list-style-type:circle">💡 Simple systems might run from only one AWS account, but <strong>complex systems usually run on many accounts</strong></li></ul><ul id="469c6138-b5f1-47ea-b460-c1bde83dea4b" class="block-color-blue_background bulleted-list"><li style="list-style-type:circle">💡 AWS accounts <strong>should be disposable</strong>. Don&#x27;t put all your business in one.</li></ul></li></ul><ul id="71ca7402-38a8-4f0e-b91c-21d0bc294555" class="bulleted-list"><li style="list-style-type:disc">When creating/provisioning an AWS account, one must provide:<ol type="1" id="af624cc3-f1f2-443c-94f8-12116f7c5cf5" class="numbered-list" start="1"><li><strong><span style="border-bottom:0.05em solid">Name</span></strong><ul id="8d4bd4e9-fc9b-451f-aba7-ab8113ca2575" class="bulleted-list"><li style="list-style-type:disc">e.g. “PROD”</li></ul></li></ol><ol type="1" id="5b7898da-a283-4a84-9052-0c9e0f3ba5e2" class="numbered-list" start="2"><li><strong><span style="border-bottom:0.05em solid">UNIQUE email address</span></strong><ul id="fc72219f-b7be-41d2-9a3e-3227866bcf1a" class="bulleted-list"><li style="list-style-type:disc">Used to create the <a href="AWS%20Accounts%20-%20The%20Basics%2009592297270546508ff449b927695933.html">account root user</a></li></ul><ul id="11530de7-a6dc-4d75-a821-10b62e07734d" class="block-color-orange_background bulleted-list"><li style="list-style-type:disc">‼️ <strong>Can NOT be shared between accounts!!</strong><ul id="6948af6d-0eae-4e3c-a1ee-607c7e0bde92" class="block-color-blue_background bulleted-list"><li style="list-style-type:circle">💡 <strong><span style="border-bottom:0.05em solid">Gmail trick:</span></strong> add <code>+</code> to an email address to make it <strong>unique outside of Gmail</strong><ul id="3c13854b-0de2-42cf-bac5-673c82557f85" class="bulleted-list"><li style="list-style-type:square">e.g. <a href="mailto:catguy+AWSAccount1@gmail.com">catguy+AWSAccount1@gmail.com</a> &amp; <a href="mailto:catguy+AWSAccount1@gmail.com">catguy+AWSAccount1@gmail.com</a> are unique from AWS perspective, but they <strong>redirect to the same Gmail account </strong>(<a href="mailto:catguy@gmail.com">catguy@gmail.com</a>)</li></ul></li></ul></li></ul></li></ol><ol type="1" id="7e8be72a-775c-4c00-a607-940fa231287e" class="numbered-list" start="3"><li><strong><span style="border-bottom:0.05em solid">Credit card</span></strong><ul id="b20b3922-b197-4b07-b86c-cbece5c486bc" class="bulleted-list"><li style="list-style-type:disc">Set as the account payment method</li></ul><ul id="c94feedb-7655-41e6-b66a-c3fe4ee5cf47" class="bulleted-list"><li style="list-style-type:disc"><strong>Can be shared</strong> between accounts</li></ul><ul id="3a66b2a0-e975-4fe3-a847-dd9dfaf2d736" class="bulleted-list"><li style="list-style-type:disc">AWS is a <strong>pay-as-you-go/pay-as-you-consume</strong> platform<ul id="67784036-717e-4a2c-8bc0-daa6fa304c70" class="bulleted-list"><li style="list-style-type:circle">As services are used/consumed, credit card is charged according to their billing</li></ul><ul id="34424b28-8012-4711-b44c-ab0853296e8b" class="bulleted-list"><li style="list-style-type:circle"><strong><span style="border-bottom:0.05em solid">Free tier</span></strong> → Certain AWS services include some free usage per month<ul id="1914681c-7a3f-4820-aec6-507bd8b6f5e4" class="bulleted-list"><li style="list-style-type:square">great for keeping costs at a minimum e.g. while learning AWS</li></ul></li></ul></li></ul></li></ol></li></ul><ul id="e51a9e0a-c23b-498a-a5f2-cb41b4b56fdb" class="bulleted-list"><li style="list-style-type:disc"><strong><a href="https://www.notion.so/IAM-Identity-and-Access-Management-Basics-2a61bb8b35614e6b9de7847213fa8d9b?pvs=21"><span style="border-bottom:0.05em solid">Account root user</span></a></strong><strong> = default identity of an AWS account</strong><ul id="603ca7ee-bf7f-407a-8c25-d65683c9cb9e" class="bulleted-list"><li style="list-style-type:circle">Has <strong>full access and control</strong> to the AWS account, <strong>can&#x27;t be restricted</strong></li></ul><ul id="917e148c-c96a-4288-9e5b-dbee64403c2e" class="bulleted-list"><li style="list-style-type:circle">The first and only identity to exist originally in an account (until others are created)<ul id="7cb9b847-3c99-47bc-8357-11c45e3a2b97" class="block-color-blue_background bulleted-list"><li style="list-style-type:square">💡 The account root user and its AWS account can be loosely thought as the same</li></ul></li></ul><ul id="e62041a7-8480-4ca8-afc9-c5cf29e2410a" class="block-color-orange_background bulleted-list"><li style="list-style-type:circle">‼️ Handle with <strong>extreme care</strong>!! If credentials of account root user are compromised, the whole account can be compromised!<ul id="4b3b4ef0-ac83-4ae6-943d-61fa1fedd077" class="block-color-blue_background bulleted-list"><li style="list-style-type:square">💡 Hence why it&#x27;s a good idea to only use account root user to set the initial account configurations, perform emergency tasks, and to close the account. Use a different admin identity (e.g. an <code>iamadmin</code> user) to perform other admin tasks.</li></ul></li></ul></li></ul><ul id="992aa79d-407d-4591-8d69-50b9bca08667" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.notion.so/IAM-Identity-and-Access-Management-Basics-2a61bb8b35614e6b9de7847213fa8d9b?pvs=21">IAM - Identity Access Management</a><ul id="f69b74c1-f5ee-408d-806d-2a9abb40513e" class="bulleted-list"><li style="list-style-type:circle"><strong>AWS Service that can create extra account identities</strong> (which can be restricted)</li></ul><ul id="6a5d5d5b-26a2-4bd6-8a57-d3cd232727d2" class="bulleted-list"><li style="list-style-type:circle">IAM identities consist of <a href="https://www.notion.so/IAM-Identity-and-Access-Management-Basics-2a61bb8b35614e6b9de7847213fa8d9b?pvs=21">users, groups &amp; roles</a></li></ul><ul id="411fba8d-eafb-47c4-8c3a-e907708a4d15" class="bulleted-list"><li style="list-style-type:circle"><strong>IAM identities start without permissions by default</strong> (except the account root user)<ul id="22ad912c-66b0-48e2-ba19-593d84c03017" class="bulleted-list"><li style="list-style-type:square">They can be granted full or partial access to services and resources in the account</li></ul></li></ul></li></ul><ul id="10f8a953-ad61-48dd-891d-1b2893780323" class="bulleted-list"><li style="list-style-type:disc"><strong><span style="border-bottom:0.05em solid">Account boundary</span></strong> → <strong>Everything inside</strong> the account is <strong><span style="border-bottom:0.05em solid">by default isolated</span></strong><strong> from the outside</strong><ul id="eceb134d-06b4-40ba-a49c-321f930c1012" class="bulleted-list"><li style="list-style-type:circle"><strong>External access denied by default</strong> (must explicitly grant access to externals if desired)</li></ul><ul id="8ca38e12-c43e-444e-b1ab-58e412733d49" class="bulleted-list"><li style="list-style-type:circle">Accounts are good at keeping bad stuff contained<ul id="e7dd459b-48f6-44fd-b90c-a5ca10f927c1" class="bulleted-list"><li style="list-style-type:square">e.g. admin errors, bad actor exploits…</li></ul></li></ul><ul id="e703f15b-2409-4a9c-b089-40eebe0cffe6" class="bulleted-list"><li style="list-style-type:circle"><strong>Putting all business in one account is risky</strong>. Having multiple accounts limits damage.<ul id="f5c9bd44-be09-478e-a8af-28d56f927647" class="bulleted-list"><li style="list-style-type:square">Hence why it&#x27;s a good idea to use separate accounts for separate things</li></ul><ul id="87e806ec-6c54-4f06-8261-cbf4d02af603" class="bulleted-list"><li style="list-style-type:square">e.g. different accounts for DEV, TEST and PROD environments</li></ul><ul id="df0a589e-275d-4214-8b2f-ce3422d63178" class="bulleted-list"><li style="list-style-type:square">e.g. different accounts for different teams, products or clients</li></ul></li></ul></li></ul><ul id="f8252d56-2f1a-4dc4-b6f6-55b6aeb097eb" class="toggle"><li><details open=""><summary>Summary Diagram</summary><figure id="28428956-b8ca-492d-9c91-285947e7f53e" class="image"><a href="AWS%20Accounts%20-%20The%20Basics%2009592297270546508ff449b927695933/Untitled.png"><img style="width:679.984375px" src="AWS%20Accounts%20-%20The%20Basics%2009592297270546508ff449b927695933/Untitled.png"/></a></figure></details></li></ul><h2 id="45234d1c-3769-4419-8f50-075404f215ed" class="">DEMO: Creating an AWS account (GENERAL account)</h2><p id="86020c2d-1c54-4d41-8560-7e3fcfa2c017" class="">Ref: <a href="https://learn.cantrill.io/courses/1820301/lectures/41301459">https://learn.cantrill.io/courses/1820301/lectures/41301459</a> </p><ul id="2633bbdd-7a63-427a-a1b5-0b1c6a0917fa" class="toggle"><li><details open=""><summary>Diagram of AWS Account that will be used in this course:</summary><figure id="a61dbecb-7a13-425e-9567-1b4a70a68a5c" class="image"><a href="AWS%20Accounts%20-%20The%20Basics%2009592297270546508ff449b927695933/Untitled%201.png"><img style="width:680px" src="AWS%20Accounts%20-%20The%20Basics%2009592297270546508ff449b927695933/Untitled%201.png"/></a></figure></details></li></ul><ul id="88926401-151c-4a8a-a50d-e3687377be2a" class="bulleted-list"><li style="list-style-type:disc">General account will have <strong>MFA</strong>, <strong>budget alarm</strong> and <code>IAMADMIN</code><strong> identity</strong> in place (all will be explained later)</li></ul><ul id="b57c29a2-5568-47db-88ca-5b937002a885" class="bulleted-list"><li style="list-style-type:disc">Sign up for an AWS account at: <a href="https://portal.aws.amazon.com/billing/signup#/start/email">https://portal.aws.amazon.com/billing/signup#/start/email</a> <ol type="1" id="1a53d49f-c958-47c4-9ca3-1f0f3f6a5595" class="numbered-list" start="1"><li>Input personal credentials/info as needed</li></ol><ol type="1" id="5567c109-9a5a-47d0-902e-2842ffc0fffa" class="numbered-list" start="2"><li>When selecting support plan, select “Basic support - Free”</li></ol><ol type="1" id="1a4d9923-bf00-44f3-91a5-5835c0fff70c" class="numbered-list" start="3"><li><strong>Activate IAM Access to Billing Information under “Account”</strong> (in drop-down menu)<figure id="d71d6841-b2d1-4383-86ed-ac91753647ef" class="image"><a href="AWS%20Accounts%20-%20The%20Basics%2009592297270546508ff449b927695933/Untitled%202.png"><img style="width:652px" src="AWS%20Accounts%20-%20The%20Basics%2009592297270546508ff449b927695933/Untitled%202.png"/></a></figure><ul id="0784bf79-8582-4ce1-80f1-7ac2d69feb3c" class="block-color-blue_background bulleted-list"><li style="list-style-type:disc">💡 Without this option enabled, even if we gave an IAM identity access to billing information, that identity would still not be able to see it</li></ul></li></ol></li></ul><ul id="f1fedec1-38c7-4672-a9d3-9aec62c9a1f4" class="bulleted-list"><li style="list-style-type:disc">❗ Generally, try to always be in the <strong>Northern Virginia region</strong> (<code>us-east-1</code>) in this course, so you get full access to services and resources</li></ul><ul id="514e98ef-2083-45d8-accd-8408f5389812" class="block-color-blue_background bulleted-list"><li style="list-style-type:disc">💡 Adrian asks you to create a PROD account that is identical to the GENERAL account you just created. For most demos, you only need the GENERAL account. Later in the course you will create an AWS Organization with the GENERAL account (which becomes the management account). Then you will add the PROD account to it and also create a DEV account. You can skip creating the PROD account for now and create it when its needed, or create it now and add it later.</li></ul><p id="cf765e16-2b84-47e6-8bd3-2471d0837d62" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

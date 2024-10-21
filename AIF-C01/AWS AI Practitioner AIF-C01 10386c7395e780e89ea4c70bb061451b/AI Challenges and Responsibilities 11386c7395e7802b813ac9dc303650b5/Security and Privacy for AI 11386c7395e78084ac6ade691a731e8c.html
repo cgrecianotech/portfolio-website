@@ -1,0 +1,684 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Security and Privacy for AI</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="11386c73-95e7-8084-ac6a-de691a731e8c" class="page sans"><header><h1 class="page-title">Security and Privacy for AI</h1><p class="page-description"></p></header><div class="page-body"><ul id="3f2dd628-110e-4aa3-8329-5162090ce23d" class="toggle"><li><details open=""><summary><span style="border-bottom:0.05em solid">Contents:</span></summary><nav id="0bea3a95-c8bd-460e-a027-c58e93275ba4" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#12386c73-95e7-8068-909e-e90bccb42f3a">Types of Security in AI</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#12386c73-95e7-8018-8335-d42700137229">Monitoring AI systems</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#12386c73-95e7-8077-b454-cb45641bdfc7">AWS Shared Responsibility Model</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#12386c73-95e7-80b8-b7b1-f4728bbc18eb">Secure Data Engineering - Best Practices</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#12386c73-95e7-80c3-9b8e-e81f2411ed8d">Generative AI Security Scoping Matrix</a></div></nav></details></li></ul><hr id="f2a52f17-751f-449a-bdc0-fb1146e78137"/><h2 id="12386c73-95e7-8068-909e-e90bccb42f3a" class="">Types of Security in AI</h2><ul id="12386c73-95e7-80b6-8f3f-c8103e1f5e2f" class="bulleted-list"><li style="list-style-type:disc"><strong>Threat Detection</strong><ul id="12386c73-95e7-805f-bb78-f3067a0793b2" class="bulleted-list"><li style="list-style-type:circle">Example of threats: generating fake content, manipulated data, automated attacks</li></ul><ul id="12386c73-95e7-80d2-8f93-d620efc0bf20" class="bulleted-list"><li style="list-style-type:circle">Deploy AI-based threat detection systems<ul id="12386c73-95e7-8003-8a56-cc6d29aa88e1" class="bulleted-list"><li style="list-style-type:square">Analyze NW traffic, user behavior, and other relevant data sources to identify threats</li></ul></li></ul></li></ul><ul id="12386c73-95e7-80e9-a36b-c9f8ed7757e3" class="bulleted-list"><li style="list-style-type:disc"><strong>Vulnerability Management</strong><ul id="12386c73-95e7-8036-ab1f-c784540dc1bb" class="bulleted-list"><li style="list-style-type:circle">Identify vulnerabilities in AI systems: software bugs, model weaknesses...</li></ul><ul id="12386c73-95e7-80d7-ae05-d48b9c6cf420" class="bulleted-list"><li style="list-style-type:circle">Conduct security assessment, penetration testing, and code reviews</li></ul><ul id="12386c73-95e7-807c-8713-d76665ce3a8a" class="bulleted-list"><li style="list-style-type:circle">Patch management &amp; update processes</li></ul></li></ul><ul id="12386c73-95e7-809e-a982-e155b1301ba7" class="bulleted-list"><li style="list-style-type:disc"><strong>Infrastructure Protection</strong><ul id="12386c73-95e7-80ab-89c3-f5b3bcfbca21" class="bulleted-list"><li style="list-style-type:circle">Secure the cloud computing platform, edge devices, and data stores</li></ul><ul id="12386c73-95e7-80e3-ba4a-fb2474e3fa30" class="bulleted-list"><li style="list-style-type:circle">Access control, NW segmentation, encryption</li></ul><ul id="12386c73-95e7-80e4-b4a4-e81109c17222" class="bulleted-list"><li style="list-style-type:circle">Ensure you can withstand systems failures</li></ul></li></ul><ul id="12386c73-95e7-800c-b871-eaf235a6258a" class="bulleted-list"><li style="list-style-type:disc"><strong>Data Encryption</strong><ul id="12386c73-95e7-809d-a0f2-c6e2459586be" class="bulleted-list"><li style="list-style-type:circle">Encrypt data at rest and in transit</li></ul><ul id="12386c73-95e7-8073-b9a9-ceb5259ac53f" class="bulleted-list"><li style="list-style-type:circle">Manage encryption keys properly and make sure they’re protected against unauthorized access</li></ul></li></ul><ul id="12386c73-95e7-803a-a33e-d6e3d0ed7d22" class="bulleted-list"><li style="list-style-type:disc"><strong>Prompt Injection</strong><ul id="12386c73-95e7-80af-ac91-f117ee909a88" class="bulleted-list"><li style="list-style-type:circle">Manipulated input prompts to generate malicious or undesirable content</li></ul><ul id="12386c73-95e7-80ac-8a78-cf524b83f91e" class="bulleted-list"><li style="list-style-type:circle">Implement <strong>guardrails</strong>: prompt filtering, sanitization, validation</li></ul><ul id="12386c73-95e7-8041-b94c-dc2192a876ce" class="toggle"><li><details open=""><summary>Additional reading: <a href="https://www.redsentry.com/blog/what-is-prompt-injection">https://www.redsentry.com/blog/what-is-prompt-injection</a></summary><figure id="12386c73-95e7-80ab-b22e-c1f8c74fcead" class="image"><a href="Security%20and%20Privacy%20for%20AI%2011386c7395e78084ac6ade691a731e8c/image.png"><img style="width:456.984375px" src="Security%20and%20Privacy%20for%20AI%2011386c7395e78084ac6ade691a731e8c/image.png"/></a></figure></details></li></ul></li></ul><hr id="12386c73-95e7-8046-9693-d2ea53341cdd"/><h2 id="12386c73-95e7-8018-8335-d42700137229" class="">Monitoring AI systems</h2><ul id="12386c73-95e7-8084-b734-f0b4853a2a15" class="bulleted-list"><li style="list-style-type:disc"><strong>Performance Metrics</strong><ul id="12386c73-95e7-80a4-a517-de7d9ceb84c8" class="bulleted-list"><li style="list-style-type:circle"><strong>Model Accuracy</strong> – ratio of positive predictions</li></ul><ul id="12386c73-95e7-803e-86eb-dd31747e3017" class="bulleted-list"><li style="list-style-type:circle"><strong>Precision</strong> – ratio of true positive predictions (correct vs. incorrect positive prediction)</li></ul><ul id="12386c73-95e7-8003-8098-c1dee75802f6" class="bulleted-list"><li style="list-style-type:circle"><strong>Recall</strong> – ratio of true positive predictions compared to actual positive</li></ul><ul id="12386c73-95e7-8035-816d-d2043d88f9b4" class="bulleted-list"><li style="list-style-type:circle"><strong>F1-score</strong> – average of precision and recall (good balanced measure)</li></ul><ul id="12386c73-95e7-80a5-ae07-cebf3345f6a3" class="bulleted-list"><li style="list-style-type:circle"><strong>Latency</strong> – time taken by the model to make a prediction</li></ul></li></ul><ul id="12386c73-95e7-806a-880b-f7bce5b3a9d6" class="bulleted-list"><li style="list-style-type:disc"><strong>Infrastructure monitoring</strong> (catch bottlenecks and failures)<ul id="12386c73-95e7-80b9-a777-ecf1255b4858" class="bulleted-list"><li style="list-style-type:circle">Compute resources (CPU and GPU usage)</li></ul><ul id="12386c73-95e7-80d7-be0a-d74bb97bdb9f" class="bulleted-list"><li style="list-style-type:circle">NW performance</li></ul><ul id="12386c73-95e7-8014-b9aa-d4e9d0142ef8" class="bulleted-list"><li style="list-style-type:circle">Storage</li></ul><ul id="12386c73-95e7-8042-8c39-ff6f754b169f" class="bulleted-list"><li style="list-style-type:circle">System Logs</li></ul></li></ul><ul id="12386c73-95e7-809d-b03f-c38fb2fa3115" class="bulleted-list"><li style="list-style-type:disc"><strong>Bias and Fairness, Compliance and Responsible AI</strong></li></ul><hr id="12386c73-95e7-8018-b11b-f252a182a4fd"/><h2 id="12386c73-95e7-8077-b454-cb45641bdfc7" class="">AWS Shared Responsibility Model</h2><ul id="12386c73-95e7-8085-82fb-ea8a65509b2f" class="bulleted-list"><li style="list-style-type:disc"><strong>AWS responsibility</strong> → Security <strong>OF</strong> the Cloud<ul id="12386c73-95e7-80c8-8ddd-c49c42d5b42f" class="bulleted-list"><li style="list-style-type:circle">Protecting infrastructure (HW, SW, facilities, and NWing) that runs the AWS services</li></ul><ul id="12386c73-95e7-80a4-bcff-d92c66d2580d" class="bulleted-list"><li style="list-style-type:circle">Managed services like Bedrock, SageMaker, S3…</li></ul></li></ul><ul id="12386c73-95e7-8026-a8db-fd4334e54be8" class="bulleted-list"><li style="list-style-type:disc"><strong>Customer responsibility</strong> → Security <strong>IN</strong> the Cloud<ul id="12386c73-95e7-802f-9b9c-dfc0bbb5b696" class="bulleted-list"><li style="list-style-type:circle">Encrypting application data</li></ul><ul id="12386c73-95e7-80bd-b95d-e1b51acc28f0" class="bulleted-list"><li style="list-style-type:circle">In Bedrock&#x27;s case → customer responsible for data management, access controls, setting up guardrails, etc</li></ul></li></ul><ul id="12386c73-95e7-8020-aed5-c5fbd2d7beeb" class="bulleted-list"><li style="list-style-type:disc"><strong>Shared controls</strong>:<ul id="12386c73-95e7-8048-a43d-fcc1d3430be3" class="bulleted-list"><li style="list-style-type:circle">Patch Management, Configuration Management, Awareness &amp; Training</li></ul></li></ul><ul id="12386c73-95e7-8008-8b2b-c02b6ee6cf3b" class="bulleted-list"><li style="list-style-type:disc">Additional reading: <a href="https://aws.amazon.com/compliance/shared-responsibility-model/">https://aws.amazon.com/compliance/shared-responsibility-model/</a></li></ul><ul id="12386c73-95e7-80be-a184-e75c6bf0fc1d" class="toggle"><li><details open=""><summary>AWS Shared Responsibility Model Diagram:</summary><figure id="12386c73-95e7-804a-a368-e64ef51eb0ea" class="image"><a href="../AWS%20&amp;%20Cloud%20Computing%2010586c7395e78034bbd3c9d6aa57cf78/image%201.png"><img style="width:513px" src="../AWS%20&amp;%20Cloud%20Computing%2010586c7395e78034bbd3c9d6aa57cf78/image%201.png"/></a></figure></details></li></ul><hr id="12386c73-95e7-80e9-b2ae-e5d43b412d4f"/><h2 id="12386c73-95e7-80b8-b7b1-f4728bbc18eb" class="">Secure Data Engineering - Best Practices</h2><ul id="12386c73-95e7-8056-825d-df5b67d78d76" class="bulleted-list"><li style="list-style-type:disc"><strong>Assessing data quality</strong><ul id="12386c73-95e7-804a-bfab-e104274326f6" class="bulleted-list"><li style="list-style-type:circle"><strong>Completeness</strong>: diverse and comprehensive range of scenarios</li></ul><ul id="12386c73-95e7-8016-8f49-c575a2ee2d46" class="bulleted-list"><li style="list-style-type:circle"><strong>Accuracy</strong>: accurate, up-to-date, and representative</li></ul><ul id="12386c73-95e7-80e7-8801-e1010ca631c1" class="bulleted-list"><li style="list-style-type:circle"><strong>Timeliness</strong>: age of the data in a data store</li></ul><ul id="12386c73-95e7-8028-91ac-db90a90e7d93" class="bulleted-list"><li style="list-style-type:circle"><strong>Consistency</strong>: maintain coherence and consistency in the data lifecycle</li></ul><ul id="12386c73-95e7-805c-8e95-c3b731783301" class="bulleted-list"><li style="list-style-type:circle">Data profiling and monitoring</li></ul><ul id="12386c73-95e7-80a2-bb94-e0e9ac6f3c86" class="bulleted-list"><li style="list-style-type:circle"><a href="Governance%20for%20AI%2011386c7395e78020af29d48003d64944.html">Data lineage</a></li></ul></li></ul><ul id="12386c73-95e7-80ac-9c4b-c2a22782bee7" class="bulleted-list"><li style="list-style-type:disc"><strong>Privacy-Enhancing technologies</strong><ul id="12386c73-95e7-80d1-8b2a-c07d6d3d6138" class="bulleted-list"><li style="list-style-type:circle"><strong>Data masking</strong> (data obfuscation to minimize risk of data breaches)</li></ul><ul id="12386c73-95e7-806a-bc69-f2704900c0ff" class="bulleted-list"><li style="list-style-type:circle">Encryption</li></ul><ul id="12386c73-95e7-806c-b90b-e13dd7d6ee74" class="bulleted-list"><li style="list-style-type:circle">Tokenization to protect data during processing and usage</li></ul></li></ul><ul id="12386c73-95e7-80c4-b749-f273c41601a1" class="bulleted-list"><li style="list-style-type:disc"><strong>Data Access Control</strong><ul id="12386c73-95e7-80b8-b690-cfd587095227" class="bulleted-list"><li style="list-style-type:circle">Comprehensive data governance framework with clear policies</li></ul><ul id="12386c73-95e7-808e-bb93-d1f2042f82ac" class="bulleted-list"><li style="list-style-type:circle"><strong>Role-based access control</strong> and fine-grained permissions to restrict access</li></ul><ul id="12386c73-95e7-80ee-93a5-daacec184d48" class="bulleted-list"><li style="list-style-type:circle">Single sign-on (SSO), multi-factor authentication (MFA), identity and access management (IAM) solutions</li></ul><ul id="12386c73-95e7-80f0-af99-c09a0b919c36" class="bulleted-list"><li style="list-style-type:circle">Monitor and log all data access activities</li></ul><ul id="12386c73-95e7-8052-b003-f6eca4e24ae8" class="bulleted-list"><li style="list-style-type:circle">Regularly review and update access rights based on <strong>least privilege principles</strong></li></ul></li></ul><ul id="12386c73-95e7-80ca-b347-cd20ae08ecd2" class="bulleted-list"><li style="list-style-type:disc"><strong>Data Integrity</strong><ul id="12386c73-95e7-80c3-a289-d4f1ecfc2ff5" class="bulleted-list"><li style="list-style-type:circle">Data is <strong>complete</strong>, <strong>consistent</strong> and free from errors and inconsistencies</li></ul><ul id="12386c73-95e7-80bc-8893-f91206275306" class="bulleted-list"><li style="list-style-type:circle">Robust data backup and recovery strategy</li></ul><ul id="12386c73-95e7-805d-891e-d063f289db8a" class="bulleted-list"><li style="list-style-type:circle">Maintain data lineage and audit trails</li></ul><ul id="12386c73-95e7-8068-b224-e99b69079b40" class="bulleted-list"><li style="list-style-type:circle">Monitor and test the data integrity controls to ensure effectiveness</li></ul></li></ul><hr id="12386c73-95e7-80d9-b870-ddd1ce6c5d0e"/><h2 id="12386c73-95e7-80c3-9b8e-e81f2411ed8d" class="">Generative AI Security Scoping Matrix</h2><ul id="12386c73-95e7-8087-acc7-d6515c23dd34" class="bulleted-list"><li style="list-style-type:disc">Framework designed to identify and manage security risks associated with deploying GenAI applications</li></ul><ul id="12386c73-95e7-8003-bc45-dc688a0f729c" class="bulleted-list"><li style="list-style-type:disc">Classify your apps in 5 defined GenAI scopes, <strong>from low to high ownership:</strong><ol type="1" id="12386c73-95e7-80fa-8310-d63543349b5e" class="numbered-list" start="1"><li>Consumer App</li></ol><ol type="1" id="12386c73-95e7-80f7-ab0b-c1ce2ec4d32c" class="numbered-list" start="2"><li>Enterprise App</li></ol><ol type="1" id="12386c73-95e7-8022-a86a-d73e87a514c3" class="numbered-list" start="3"><li>Pre-trained Models</li></ol><ol type="1" id="12386c73-95e7-80dd-8ee5-e3aa5ba9ff00" class="numbered-list" start="4"><li>Fine-tuned Models</li></ol><ol type="1" id="12386c73-95e7-80cf-bc01-fa3bb7d08396" class="numbered-list" start="5"><li>Self-trained Models</li></ol></li></ul><ul id="12386c73-95e7-8067-864d-efe89519d63a" class="bulleted-list"><li style="list-style-type:disc">Matrix:<figure id="9b4ea7f6-eac2-4f48-8e3c-5a4c6064774e" class="image"><a href="Security%20and%20Privacy%20for%20AI%2011386c7395e78084ac6ade691a731e8c/image%201.png"><img style="width:512.953125px" src="Security%20and%20Privacy%20for%20AI%2011386c7395e78084ac6ade691a731e8c/image%201.png"/></a></figure><ul id="edc03a1c-4aba-4f65-a490-2007bde01b0c" class="bulleted-list"><li style="list-style-type:circle"><strong>No ownership ←—→ Complete ownership</strong></li></ul></li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

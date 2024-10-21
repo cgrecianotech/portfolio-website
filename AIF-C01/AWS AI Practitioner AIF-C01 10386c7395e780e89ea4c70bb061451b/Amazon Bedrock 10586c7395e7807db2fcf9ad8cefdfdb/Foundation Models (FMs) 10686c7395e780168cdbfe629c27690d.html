@@ -1,0 +1,684 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Foundation Models (FMs)</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="10686c73-95e7-8016-8cdb-fe629c27690d" class="page sans"><header><h1 class="page-title">Foundation Models (FMs)</h1><p class="page-description"></p></header><div class="page-body"><ul id="10686c73-95e7-8049-bfe3-ece8d753e93b" class="toggle"><li><details open=""><summary><span style="border-bottom:0.05em solid">Contents:</span></summary><nav id="820cfbcb-0c59-4460-8df1-d675084b88ca" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#10686c73-95e7-80d6-a865-dd52151a3b19">Bedrock FMs Overview</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#10686c73-95e7-8025-ae53-ced49cde02e2">Comparison table of important FMs</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#10686c73-95e7-8047-ae86-d050a02c6195">Demo</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#10686c73-95e7-80cf-95fb-d43b73295158">Fine-Tuning a Model</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#10686c73-95e7-804f-b352-fadae59a402f">Types of Fine-Tuning</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#10686c73-95e7-80c5-9254-c197a47fe602">Important to know</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#10686c73-95e7-8027-8fd7-c7f7a4540a60">FM Evaluation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#10786c73-95e7-805c-aa25-c29167b5a0c6">Automated Metrics to Evaluate a (language) FM</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#10786c73-95e7-801b-add1-efd3663f1954">Business Metrics to Evaluate an FM</a></div></nav></details></li></ul><hr id="11886c73-95e7-8044-bb29-f3b572bcf426"/><h2 id="10686c73-95e7-80d6-a865-dd52151a3b19" class="">Bedrock FMs Overview</h2><ul id="a3b1b243-4fea-4efc-82fd-0872bbc5d5a0" class="bulleted-list"><li style="list-style-type:disc">Choosing an adequate FM depends on a lot of factors!<ul id="45093917-acc1-451f-8971-912de28e46c9" class="bulleted-list"><li style="list-style-type:circle">Model types, performance requirements, capabilities, constraints, compliance</li></ul><ul id="10686c73-95e7-805d-b06b-cac58d7e0a7c" class="bulleted-list"><li style="list-style-type:circle">Level of <strong>customization</strong>, model size, inference options, licensing agreements, context windows, latency</li></ul><ul id="10686c73-95e7-8043-8f5a-e9eda8da5c23" class="bulleted-list"><li style="list-style-type:circle"><strong>Multimodal</strong> models (varied types of input and outputs)<ul id="10686c73-95e7-802a-8ce9-c4a59c814989" class="bulleted-list"><li style="list-style-type:square">Multimodal models can do e.g. both text and image</li></ul></li></ul></li></ul><ul id="67597e63-52b1-4bc4-93c9-468f63acf458" class="block-color-blue_background bulleted-list"><li style="list-style-type:disc">💡 Smaller models: more cost-effective &amp; more limited in outputs</li></ul><ul id="10686c73-95e7-805f-8579-fe4c6292ee1b" class="bulleted-list"><li style="list-style-type:disc"><strong>Amazon Titan</strong><ul id="1b49e74e-c3de-4fd7-8046-fed0e6daff49" class="bulleted-list"><li style="list-style-type:circle">High-performing FM from AWS</li></ul><ul id="10686c73-95e7-80d1-85e1-ce08a1fa03cd" class="bulleted-list"><li style="list-style-type:circle">Image, text, multimodal model choices via fully-managed APIs</li></ul><ul id="10686c73-95e7-8017-af31-eda1c7bf589d" class="bulleted-list"><li style="list-style-type:circle">Can be customized with your own data</li></ul></li></ul><h3 id="10686c73-95e7-8025-ae53-ced49cde02e2" class="">Comparison table of important FMs</h3><figure id="10686c73-95e7-809e-a2bc-faed40ac2c0f" class="image"><a href="Foundation%20Models%20(FMs)%2010686c7395e780168cdbfe629c27690d/image.png"><img style="width:512.984375px" src="Foundation%20Models%20(FMs)%2010686c7395e780168cdbfe629c27690d/image.png"/></a></figure><ul id="10686c73-95e7-80f5-86d2-d8fe52ac8458" class="bulleted-list"><li style="list-style-type:disc">Stable Diffusion used mainly for image generation</li></ul><ul id="10686c73-95e7-8067-be6e-e797e55bef3c" class="bulleted-list"><li style="list-style-type:disc">Cheapness: Titan &gt; Llama &gt; Claude</li></ul><ul id="10686c73-95e7-803a-bbb4-ed9ae1f37395" class="bulleted-list"><li style="list-style-type:disc">Input tokens: Claude &gt; Titan &gt; Llama<ul id="4066c493-0588-456e-8fae-a88b24a6ae15" class="bulleted-list"><li style="list-style-type:circle">i.e. how big/long can the prompt be</li></ul></li></ul><ul id="d5e2c3ae-e5b4-450c-818c-afdb698749f3" class="block-color-orange_background bulleted-list"><li style="list-style-type:disc">‼️ Remember features and use cases!!</li></ul><ul id="10686c73-95e7-80fd-b3ff-e8179ec56666" class="block-color-blue_background bulleted-list"><li style="list-style-type:disc">💡 The FMs are slowly converging to the same thing, but right now there are differences between them</li></ul><h3 id="10686c73-95e7-8047-ae86-d050a02c6195" class="">Demo</h3><ul id="10686c73-95e7-80c4-a730-cc88110bc105" class="bulleted-list"><li style="list-style-type:disc">Can compare outputs of different FMs for same prompts<ul id="10686c73-95e7-80bd-b2e5-e2215d9a4814" class="toggle"><li><details open=""><summary>Screenshot</summary><figure id="85e947b3-56f1-4f07-abba-10cdfefc8584" class="image"><a href="Foundation%20Models%20(FMs)%2010686c7395e780168cdbfe629c27690d/image%201.png"><img style="width:456.96875px" src="Foundation%20Models%20(FMs)%2010686c7395e780168cdbfe629c27690d/image%201.png"/></a></figure><figure id="10686c73-95e7-805a-a44c-ed3fa9dce6bd" class="image"><a href="Foundation%20Models%20(FMs)%2010686c7395e780168cdbfe629c27690d/image%202.png"><img style="width:456.984375px" src="Foundation%20Models%20(FMs)%2010686c7395e780168cdbfe629c27690d/image%202.png"/></a></figure></details></li></ul></li></ul><ul id="10686c73-95e7-80b8-9586-ddefbeb210e6" class="bulleted-list"><li style="list-style-type:disc"><strong>Custom Models</strong> → Influence an FM with your own data:<ul id="10686c73-95e7-80ca-8d01-ef1c88f06f65" class="bulleted-list"><li style="list-style-type:circle">Fine-tuning job: applied once</li></ul><ul id="10686c73-95e7-800d-9d11-c80975d080e0" class="bulleted-list"><li style="list-style-type:circle">Continued Pre-training job: applied continuously</li></ul></li></ul><ul id="10686c73-95e7-8026-b240-c47d4a495f5e" class="bulleted-list"><li style="list-style-type:disc">Fine-tuning an FM<ul id="10686c73-95e7-80d6-9b55-c29edbb5d7c7" class="bulleted-list"><li style="list-style-type:circle"><strong>S3 used</strong> → Bedrock needs a service role with S3 permissions<ul id="10686c73-95e7-80fc-8e2b-c99ea98990dc" class="bulleted-list"><li style="list-style-type:square">Training data</li></ul><ul id="10686c73-95e7-80f5-ad5f-c271db28da2c" class="bulleted-list"><li style="list-style-type:square">Validation data (if existent)</li></ul><ul id="10686c73-95e7-80e2-94c0-c7fa2de88fbc" class="bulleted-list"><li style="list-style-type:square">Output data</li></ul></li></ul><ul id="209dbbea-acaf-42c7-a860-3176b6b3e290" class="bulleted-list"><li style="list-style-type:circle"><strong><a href="../AI%20and%20Machine%20Learning%20(ML)%2010a86c7395e780f788cfe3b09f590d04/Hyperparameters%2010e86c7395e78001a06cef9441fbaf16.html">Hyperparameters</a></strong>: present in ML jobs<ul id="10686c73-95e7-8067-aa2c-deac6275e09a" class="bulleted-list"><li style="list-style-type:square">configurations on how the algorithm should behave</li></ul><ul id="10686c73-95e7-808b-8cca-e15e326f7675" class="bulleted-list"><li style="list-style-type:square">very useful for data scientists</li></ul></li></ul><ul id="10686c73-95e7-80e6-8c4d-f0a8b346ae91" class="bulleted-list"><li style="list-style-type:circle">Must <strong>purchase provisioned throughput</strong><ul id="10686c73-95e7-8057-a2d0-e614ae8cffc7" class="bulleted-list"><li style="list-style-type:square">Very expensive!!</li></ul><ul id="10686c73-95e7-80e4-9769-eefa23a0d535" class="toggle"><li><details open=""><summary>Screenshot</summary><figure id="10686c73-95e7-8051-976b-c9e1782fcf67" class="image"><a href="Foundation%20Models%20(FMs)%2010686c7395e780168cdbfe629c27690d/image%203.png"><img style="width:428.984375px" src="Foundation%20Models%20(FMs)%2010686c7395e780168cdbfe629c27690d/image%203.png"/></a></figure></details></li></ul></li></ul></li></ul><hr id="11886c73-95e7-80b4-9594-c94469dd9a52"/><h2 id="10686c73-95e7-80cf-95fb-d43b73295158" class="">Fine-Tuning a Model</h2><ul id="10686c73-95e7-800d-8cf9-f9f45c575444" class="block-color-teal_background bulleted-list"><li style="list-style-type:disc">🔧 <span style="border-bottom:0.05em solid">Def</span>: Adapt a copy of an FM with your own data<ul id="10686c73-95e7-8051-8252-c3d46fbff137" class="bulleted-list"><li style="list-style-type:circle"><strong>changes the weight</strong> of the base FM</li></ul></li></ul><ul id="10686c73-95e7-8002-81c8-f6ab69f9c42e" class="bulleted-list"><li style="list-style-type:disc">Requisites<ul id="10686c73-95e7-8001-b829-d0e555a5db5f" class="bulleted-list"><li style="list-style-type:circle">Training data must adhere to a specific format</li></ul><ul id="4d34a412-a389-4c86-9a66-5e701460408d" class="bulleted-list"><li style="list-style-type:circle">Training data must be stored in S3</li></ul><ul id="4adc4c96-ada8-4f92-9cc0-17bc0f605793" class="bulleted-list"><li style="list-style-type:circle">Must use Provisioned Throughput</li></ul></li></ul><ul id="a73e01d5-4bbf-4211-9355-c1d7403d9d01" class="block-color-orange_background bulleted-list"><li style="list-style-type:disc">‼️ Not all FMs can be fine-tuned!</li></ul><h3 id="10686c73-95e7-804f-b352-fadae59a402f" class="">Types of Fine-Tuning</h3><ol type="1" id="d4b4e1a4-8b34-4849-a456-2b1a8947c225" class="numbered-list" start="1"><li><span style="border-bottom:0.05em solid">Instruction-based</span><ul id="10686c73-95e7-8018-82bf-c9cf1ab93003" class="block-color-teal_background bulleted-list"><li style="list-style-type:disc">🔧 Uses <strong>labeled examples</strong> that are <strong>prompt-response</strong> pairs</li></ul><ul id="ed8de16d-67ed-4513-9da3-44e1c1971385" class="bulleted-list"><li style="list-style-type:disc">Further training on a particular field/area of knowledge</li></ul><ul id="10686c73-95e7-804f-a62c-ecc29853ce8d" class="toggle"><li><details open=""><summary>Example</summary><figure id="10686c73-95e7-80ed-9f93-d038156fb87b" class="image"><a href="Foundation%20Models%20(FMs)%2010686c7395e780168cdbfe629c27690d/image%204.png"><img style="width:383px" src="Foundation%20Models%20(FMs)%2010686c7395e780168cdbfe629c27690d/image%204.png"/></a></figure></details></li></ul><ul id="10686c73-95e7-8041-a78d-dc6a24f03004" class="bulleted-list"><li style="list-style-type:disc">Some special types:<ol type="1" id="10686c73-95e7-8015-88b4-ccec28c3810b" class="numbered-list" start="1"><li><strong>Single-Turn Messaging</strong><ul id="aa7cd9f0-43cd-4a14-a6d4-5ebb0916d3a1" class="bulleted-list"><li style="list-style-type:disc"><code>system</code>: context for conversation</li></ul><ul id="10686c73-95e7-807c-a9a7-ed5d49399a01" class="bulleted-list"><li style="list-style-type:disc"><code>messages</code>: array of <code>message</code>s, each contains <code>role</code> (user/assistant) &amp; <code>content</code></li></ul><ul id="99a45d3a-58c9-42dd-8a6a-27015956487a" class="toggle"><li><details open=""><summary>Example</summary><figure id="10686c73-95e7-80f2-be61-c6041dd8cdfb" class="image"><a href="Foundation%20Models%20(FMs)%2010686c7395e780168cdbfe629c27690d/image%205.png"><img style="width:400.984375px" src="Foundation%20Models%20(FMs)%2010686c7395e780168cdbfe629c27690d/image%205.png"/></a></figure></details></li></ul></li></ol><ol type="1" id="1b9283ed-1622-4cd8-8fa1-64ec7556e397" class="numbered-list" start="2"><li><strong>Multi-Turn Messaging</strong><ul id="10686c73-95e7-805f-8a25-d6c95aa86f47" class="bulleted-list"><li style="list-style-type:disc">Compared to Single-Turn, user &amp; assistant take <strong>multiple turns in a conversation</strong></li></ul><ul id="10686c73-95e7-80ce-a165-f3950826cae2" class="block-color-blue_background bulleted-list"><li style="list-style-type:disc">💡 <strong>Chatbots</strong> = multi-turn environment</li></ul><ul id="10686c73-95e7-80dc-ae7a-fefd8c5b56c7" class="toggle"><li><details open=""><summary>Example</summary><figure id="10686c73-95e7-80cd-aa6d-fe579660a406" class="image"><a href="Foundation%20Models%20(FMs)%2010686c7395e780168cdbfe629c27690d/image%206.png"><img style="width:400.984375px" src="Foundation%20Models%20(FMs)%2010686c7395e780168cdbfe629c27690d/image%206.png"/></a></figure></details></li></ul></li></ol></li></ul></li></ol><ol type="1" id="10686c73-95e7-80e3-a918-e7e9e2404249" class="numbered-list" start="2"><li><span style="border-bottom:0.05em solid">Continued Pre-training = Domain-adaptation fine-tuning</span><ul id="6038e325-67f6-419d-a161-99a8066cd250" class="block-color-teal_background bulleted-list"><li style="list-style-type:disc">🔧 <strong>Additional unlabeled data</strong> provided for further training<ul id="17af2ebd-a2f8-49b9-9874-0a34646161e4" class="bulleted-list"><li style="list-style-type:circle">Training can continue as more data becomes available</li></ul></li></ul><ul id="10686c73-95e7-80fb-8ddb-c4936b95944b" class="bulleted-list"><li style="list-style-type:disc">Good for feeding industry-specific terminology into a model (acronyms…)<ul id="10686c73-95e7-80f0-bd77-c87f47ad6be0" class="bulleted-list"><li style="list-style-type:circle">e.g. feeding the entire AWS documentation to a model to make it an expert on AWS</li></ul></li></ul><ul id="c1215895-40bd-4189-a570-2a60efb8fd0b" class="toggle"><li><details open=""><summary>Example</summary><figure id="10686c73-95e7-8051-9623-c678e0d25cc1" class="image"><a href="Foundation%20Models%20(FMs)%2010686c7395e780168cdbfe629c27690d/image%207.png"><img style="width:362px" src="Foundation%20Models%20(FMs)%2010686c7395e780168cdbfe629c27690d/image%207.png"/></a></figure></details></li></ul></li></ol><h3 id="10686c73-95e7-80c5-9254-c197a47fe602" class="">Important to know</h3><ul id="10686c73-95e7-8026-b122-ef47c01d3665" class="bulleted-list"><li style="list-style-type:disc">Fine-tuning requires:<ul id="10686c73-95e7-8040-a17c-e3c922b18d43" class="bulleted-list"><li style="list-style-type:circle">Provisioned throughput → <strong>high costs</strong></li></ul><ul id="10686c73-95e7-801c-8acd-c7536022bc3b" class="bulleted-list"><li style="list-style-type:circle">Experienced ML engineers (prepare data, do fine-tuning, then <strong>evaluate</strong> model)</li></ul></li></ul><ul id="10686c73-95e7-80ec-a10e-c60992cf5fd9" class="bulleted-list"><li style="list-style-type:disc">Instruction-based usually cheaper than continued pre-training → computations less intense &amp; amount of data required usually less</li></ul><ul id="a31d4fd8-69dc-4d88-a92b-368ee08ade64" class="bulleted-list"><li style="list-style-type:disc"><strong>Transfer learning</strong> = reusing a pre-trained model to adapt it to a new related task (general ML concept)<ul id="10686c73-95e7-8093-b376-fcf5339796bc" class="bulleted-list"><li style="list-style-type:circle">❗Fine-tuning is a specific kind of transfer learning!</li></ul></li></ul><ul id="10686c73-95e7-806b-9432-c20bbc0b3d69" class="bulleted-list"><li style="list-style-type:disc">Possible <strong>use cases</strong><ul id="10686c73-95e7-8079-bdb4-cef19387216d" class="bulleted-list"><li style="list-style-type:circle">Chatbot designed with a particular persona or tone, or geared<br/>towards a specific purpose (e.g., assisting customers, crafting<br/>advertisements)<br/></li></ul><ul id="f53d25a6-98fd-40e9-9770-39c9b47c58d4" class="bulleted-list"><li style="list-style-type:circle">Training using more up-to-date information than what the language model previously accessed</li></ul><ul id="10686c73-95e7-8069-b5eb-c04e05cbc02b" class="bulleted-list"><li style="list-style-type:circle">Training with exclusive data (e.g., your historical emails or messages, records from customer service interactions)</li></ul><ul id="10686c73-95e7-8009-a37c-d52a10921c08" class="bulleted-list"><li style="list-style-type:circle">Targeted use cases (categorization, assessing accuracy)</li></ul></li></ul><hr id="11886c73-95e7-80ed-ab28-eb360ee01664"/><h2 id="10686c73-95e7-8027-8fd7-c7f7a4540a60" class="">FM Evaluation</h2><ul id="10686c73-95e7-8095-8a0c-cabe80e570cc" class="toggle"><li><details open=""><summary>Architecture Diagram</summary><figure id="10686c73-95e7-8007-84ca-f505230e5080" class="image"><a href="Foundation%20Models%20(FMs)%2010686c7395e780168cdbfe629c27690d/image%208.png"><img style="width:299px" src="Foundation%20Models%20(FMs)%2010686c7395e780168cdbfe629c27690d/image%208.png"/></a></figure></details></li></ul><ul id="10686c73-95e7-806c-8c15-db9d4e375774" class="bulleted-list"><li style="list-style-type:disc"><strong>Quality control for an FM</strong><ul id="b29d4495-2a13-43b8-aacf-3a8b1a7a89b6" class="bulleted-list"><li style="list-style-type:circle">Helpful to measure: accuracy, speed and efficiency, scalability</li></ul></li></ul><ul id="9ec8480c-d900-40eb-b822-b8587510e0b5" class="block-color-default_background bulleted-list"><li style="list-style-type:disc">Evaluation can be done by a <strong>Judge Model</strong> or by a <strong>group of humans</strong><ul id="10786c73-95e7-80fd-a086-c99ed5c5242f" class="bulleted-list"><li style="list-style-type:circle">humans can also perform custom tasks, rate thumbs-up/down or with 5-star ratings…</li></ul></li></ul><ul id="7c264bc6-8212-430d-91f7-cda3961c4e2b" class="toggle"><li><details open=""><summary>Built-in task types (evaluation for language models):</summary><figure id="10686c73-95e7-807c-ac78-e5ed66d3f427" class="image"><a href="Foundation%20Models%20(FMs)%2010686c7395e780168cdbfe629c27690d/image%209.png"><img style="width:484.953125px" src="Foundation%20Models%20(FMs)%2010686c7395e780168cdbfe629c27690d/image%209.png"/></a></figure></details></li></ul><ul id="0677c881-9851-4dcd-88b7-556145e8c892" class="bulleted-list"><li style="list-style-type:disc">Benchmark datasets (prompts + answers) can be provided directly by AWS (curated datasets) or customers can bring their own<ul id="75d23a78-fc35-422d-bb12-ef925a123690" class="block-color-orange_background bulleted-list"><li style="list-style-type:circle">‼️ Some benchmarks datasets allow you to very<br/>quickly detect any kind of <br/><strong>bias, toxicity and potential<br/>discrimination<br/></strong> against a group of people!</li></ul></li></ul><ul id="10686c73-95e7-807b-ab1e-e01a18b3d831" class="bulleted-list"><li style="list-style-type:disc">Model scores calculated automatically using various statistical methods</li></ul><h3 id="10786c73-95e7-805c-aa25-c29167b5a0c6" class="">Automated Metrics to Evaluate a (language) FM</h3><ol type="1" id="10786c73-95e7-8016-9643-dd92db026201" class="numbered-list" start="1"><li><strong>ROUGE:</strong> Recall-Oriented Understudy for Gisting Evaluation<ul id="10786c73-95e7-80e3-b7a3-c642deeb575e" class="bulleted-list"><li style="list-style-type:disc">Evaluate automatic summarization &amp; machine translation</li></ul><ul id="10786c73-95e7-80c6-9b28-e8a9f28adb2a" class="bulleted-list"><li style="list-style-type:disc">ROUGE-N: matching n-grams between reference text and generated text</li></ul><ul id="bddac0b7-d926-44b4-ab6d-e5163b2ed785" class="bulleted-list"><li style="list-style-type:disc">ROUGE-L: longest common subsequence</li></ul></li></ol><ol type="1" id="10786c73-95e7-80b0-bf86-d46f4005927a" class="numbered-list" start="2"><li><strong>BLEU:</strong> Bilingual Evaluation Understudy<ul id="10786c73-95e7-802e-b763-ccc588b5bb8e" class="bulleted-list"><li style="list-style-type:disc">Evaluate quality of generated text, especially translations</li></ul><ul id="10786c73-95e7-8016-9667-da83b325d568" class="bulleted-list"><li style="list-style-type:disc">Considers precision, penalizes brevity</li></ul></li></ol><ol type="1" id="94840987-f7b3-45ae-9672-f5a3807616c7" class="numbered-list" start="3"><li><strong>BERTScore</strong><ul id="10786c73-95e7-8057-b5f2-e8e111c4ad91" class="bulleted-list"><li style="list-style-type:disc">BERT = Bidirectional Encoder Representations from Transformers</li></ul><ul id="ec856b02-37bb-4695-87df-d85d14559d83" class="bulleted-list"><li style="list-style-type:disc"><strong>Semantic similarity</strong> between reference text and generated text → captures more nuance between texts</li></ul></li></ol><ol type="1" id="dec61563-7b15-43ec-b4d7-a3a2b4d36100" class="numbered-list" start="4"><li><strong>Perplexity</strong><ul id="10786c73-95e7-8057-93d5-ea1fdc44e1be" class="bulleted-list"><li style="list-style-type:disc">How well the model predicts the next token (lower is better)</li></ul></li></ol><h3 id="10786c73-95e7-801b-add1-efd3663f1954" class="">Business Metrics to Evaluate an FM</h3><ul id="ec0d738c-f4f1-4a4c-b6ef-a424a6a5899d" class="bulleted-list"><li style="list-style-type:disc"><strong>User Satisfaction</strong> – gather users’ feedbacks and assess their satisfaction with the model responses<ul id="10786c73-95e7-8007-957c-daf0e58648c1" class="bulleted-list"><li style="list-style-type:circle">e.g., user satisfaction for an ecommerce platform</li></ul></li></ul><ul id="10786c73-95e7-802f-9bdc-fb886796f4fe" class="bulleted-list"><li style="list-style-type:disc"><strong>Average Revenue Per User (ARPU)</strong> – average revenue per user attributed to the Gen-AI app<ul id="10786c73-95e7-8030-8cac-f36e9afc2f64" class="bulleted-list"><li style="list-style-type:circle">e.g., monitor ecommerce user base revenue</li></ul></li></ul><ul id="10786c73-95e7-80a8-bf88-e309c70bccc6" class="bulleted-list"><li style="list-style-type:disc"><strong>Cross-Domain Performance</strong> – measure the model’s ability to perform cross different domains tasks<ul id="10786c73-95e7-8026-a782-eb8893851df9" class="bulleted-list"><li style="list-style-type:circle">e.g., monitor multi-domain ecommerce platform</li></ul></li></ul><ul id="10786c73-95e7-8059-92d4-f722e4de6598" class="bulleted-list"><li style="list-style-type:disc"><strong>Conversion Rate</strong> – generate recommended desired outcomes such as purchases<ul id="10786c73-95e7-8049-bade-cebf03c118f4" class="bulleted-list"><li style="list-style-type:circle">e.g., optimizing ecommerce platform for higher conversion rate</li></ul></li></ul><ul id="10786c73-95e7-8093-86ae-df546ebf6e8b" class="bulleted-list"><li style="list-style-type:disc"><strong>Efficiency</strong> – evaluate the model’s efficiency in computation, resource utilization…<ul id="10786c73-95e7-80ec-8778-d41db8ea4a6c" class="bulleted-list"><li style="list-style-type:circle">e.g., improve production line efficiency</li></ul></li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

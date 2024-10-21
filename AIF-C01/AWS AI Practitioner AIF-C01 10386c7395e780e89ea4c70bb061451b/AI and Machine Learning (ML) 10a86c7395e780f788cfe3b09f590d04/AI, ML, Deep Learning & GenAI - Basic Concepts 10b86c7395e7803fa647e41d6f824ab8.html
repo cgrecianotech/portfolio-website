@@ -1,0 +1,685 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>AI, ML, Deep Learning &amp; GenAI - Basic Concepts</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="10b86c73-95e7-803f-a647-e41d6f824ab8" class="page sans"><header><h1 class="page-title">AI, ML, Deep Learning &amp; GenAI - Basic Concepts</h1><p class="page-description"></p></header><div class="page-body"><ul id="10b86c73-95e7-8052-b74b-ce9d5d8d046a" class="toggle"><li><details open=""><summary><span style="border-bottom:0.05em solid">Contents:</span></summary><nav id="8236dfb4-df6b-45dc-abb1-e26974207ee5" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#10b86c73-95e7-80a8-a550-d910a4664fc8">Artificial Intelligence (AI)</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#10b86c73-95e7-802e-bcfa-f46f94629486">Machine Learning (ML)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#10e86c73-95e7-803a-b4f7-fe14d1b4e944">When is Machine Learning NOT appropriate?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#10c86c73-95e7-80bd-934e-f9ac9a22ad36">Deep Learning (DL)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#10c86c73-95e7-8021-b1ec-f6bba372d13f">Neural Networks</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#10c86c73-95e7-806c-a89c-c7ee1bb7e29d">Generative AI (GenAI)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#10c86c73-95e7-80e5-979f-f3bab0b10dcc">GenAI Components</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#10c86c73-95e7-80bf-9163-ed009ab93306">Transformer Model (LLM)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#10c86c73-95e7-80b4-b91c-cbc71cb44dfd">Diffusion Model (e.g. Stable Diffusion)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#10c86c73-95e7-80f9-a463-c926e1d40762">Multi-modal Models</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#10c86c73-95e7-8043-b67b-c2f3f8df772c">Human thinking can be AI-like in different scenarios</a></div></nav></details></li></ul><hr id="11c86c73-95e7-80b9-aa90-c58ebf55f826"/><h2 id="10b86c73-95e7-80a8-a550-d910a4664fc8" class="">Artificial Intelligence (AI)</h2><ul id="48526ee8-b4c8-4da2-a283-4c8bb85ab105" class="block-color-teal_background bulleted-list"><li style="list-style-type:disc">🔧 Broad field for the development of <strong>intelligent systems</strong> capable of performing tasks that typically require human intelligence:<ul id="10b86c73-95e7-80c9-b836-dc97840ffdc5" class="bulleted-list"><li style="list-style-type:circle">Perception, Reasoning, Learning, Problem solving, Decision-making…</li></ul><ul id="dc29d27b-e3cb-4bde-824f-560afe3d84ec" class="bulleted-list"><li style="list-style-type:circle"><strong>Umbrella-term</strong> for various techniques</li></ul></li></ul><ul id="156372f0-5130-48f3-98ad-65ad12d179da" class="toggle"><li><details open=""><summary>Diagram</summary><figure id="10b86c73-95e7-8015-8fd5-db69411d6c0c" class="image"><a href="AI,%20ML,%20Deep%20Learning%20&amp;%20GenAI%20-%20Basic%20Concepts%2010b86c7395e7803fa647e41d6f824ab8/image.png"><img style="width:362px" src="AI,%20ML,%20Deep%20Learning%20&amp;%20GenAI%20-%20Basic%20Concepts%2010b86c7395e7803fa647e41d6f824ab8/image.png"/></a></figure></details></li></ul><hr id="11c86c73-95e7-8035-8517-d05e34bc023f"/><h2 id="10b86c73-95e7-802e-bcfa-f46f94629486" class="">Machine Learning (ML)</h2><ul id="10c86c73-95e7-8051-b8e0-f60b275f3b57" class="block-color-teal_background bulleted-list"><li style="list-style-type:disc">🔧 Subset of AI whereby lots of data (<strong>training data</strong>) is fed into an <strong>algorithm</strong>, which outputs a <strong>statistical model and rules</strong><ul id="10c86c73-95e7-805f-b496-cb53eae48e0a" class="bulleted-list"><li style="list-style-type:circle">❗<strong>No explicit programming of rules</strong> → rules “learned” from training data</li></ul><ul id="10c86c73-95e7-8082-a6c5-f0bd8695dc70" class="bulleted-list"><li style="list-style-type:circle">ML systems can make <strong>predictions</strong> based on <strong>patterns</strong> of their training data</li></ul></li></ul><ul id="10c86c73-95e7-80b7-94b3-dbf0f4a81559" class="toggle"><li><details open=""><summary>Examples: <strong>Regression</strong> and <strong>Classification</strong> algorithms</summary><figure id="10c86c73-95e7-8078-9c81-dd3a226b69f8" class="image"><a href="AI,%20ML,%20Deep%20Learning%20&amp;%20GenAI%20-%20Basic%20Concepts%2010b86c7395e7803fa647e41d6f824ab8/image%201.png"><img style="width:484.96875px" src="AI,%20ML,%20Deep%20Learning%20&amp;%20GenAI%20-%20Basic%20Concepts%2010b86c7395e7803fa647e41d6f824ab8/image%201.png"/></a></figure><ul id="10c86c73-95e7-80bb-9057-fbdad8447c91" class="block-color-blue_background bulleted-list"><li style="list-style-type:disc">💡 In both systems, the algorithm can make estimated guesses for samples not provided in training data</li></ul></details></li></ul><ul id="10c86c73-95e7-8093-b082-cf1a24326cec" class="block-color-orange_background bulleted-list"><li style="list-style-type:disc">‼️ <strong>AI ≠ ML!!</strong><ul id="10c86c73-95e7-806c-b38d-f88a4bfff8d9" class="bulleted-list"><li style="list-style-type:circle">Example: <strong>MYCIN Expert System</strong> from 1970s is AI with hundreds of predefined rules to determine culprit bacteria</li></ul><ul id="10c86c73-95e7-80d2-b04d-f000d7fdd9ba" class="bulleted-list"><li style="list-style-type:circle">A set of <strong>if-else</strong> statements could be considered barebones AI</li></ul></li></ul><h3 id="10e86c73-95e7-803a-b4f7-fe14d1b4e944" class="">When is Machine Learning NOT appropriate?</h3><ul id="10e86c73-95e7-80ba-93c5-f004a9249c3f" class="bulleted-list"><li style="list-style-type:disc"><strong>Deterministic problems</strong> (where the solution can be computed) are better solved with <strong>computer code</strong> adapted to the problem than with ML<ul id="10e86c73-95e7-80ea-b59d-f01dd17a2fc0" class="bulleted-list"><li style="list-style-type:circle">ML algorithms can offer an <strong>approximation</strong> of the result, but they&#x27;re always <strong>worse</strong> and less optimal than a direct coding solution →</li></ul></li></ul><ul id="10e86c73-95e7-80f4-af7e-d7082f95fa55" class="toggle"><li><details open=""><summary>Example: Probability of drawing a blue card in a deck of cards</summary><figure id="10e86c73-95e7-800e-b405-c017818caa19" class="image"><a href="AI,%20ML,%20Deep%20Learning%20&amp;%20GenAI%20-%20Basic%20Concepts%2010b86c7395e7803fa647e41d6f824ab8/image%202.png"><img style="width:343px" src="AI,%20ML,%20Deep%20Learning%20&amp;%20GenAI%20-%20Basic%20Concepts%2010b86c7395e7803fa647e41d6f824ab8/image%202.png"/></a></figure></details></li></ul><hr id="11c86c73-95e7-809c-ab06-ffd03de926af"/><h2 id="10c86c73-95e7-80bd-934e-f9ac9a22ad36" class="">Deep Learning (DL)</h2><ul id="10c86c73-95e7-8077-be17-eebfb38796cb" class="block-color-teal_background bulleted-list"><li style="list-style-type:disc">🔧 Subset of ML which involves applying <strong>several “learning layers”</strong> to the training data, which form a <strong>neural network</strong><ul id="10c86c73-95e7-8039-b0c2-ec7198533164" class="bulleted-list"><li style="list-style-type:circle">DL can process and detect more <strong>complex patterns</strong> than traditional ML</li></ul><ul id="10c86c73-95e7-8048-8251-e9fed3b18cf7" class="bulleted-list"><li style="list-style-type:circle">Examples:<ul id="11c86c73-95e7-809f-8898-c3398763a64a" class="bulleted-list"><li style="list-style-type:square"><strong>Computer Vision</strong> → images</li></ul><ul id="11c86c73-95e7-801e-8a05-d58d1a73fa03" class="bulleted-list"><li style="list-style-type:square"><strong>Natural Language Processing (NLP)</strong> → text</li></ul></li></ul><ul id="10c86c73-95e7-8045-ba73-fceb507d7c09" class="toggle"><li><details open=""><summary>Diagram of a neural network</summary><figure id="10c86c73-95e7-803c-8bd4-f17520d25d47" class="image"><a href="AI,%20ML,%20Deep%20Learning%20&amp;%20GenAI%20-%20Basic%20Concepts%2010b86c7395e7803fa647e41d6f824ab8/image%203.png"><img style="width:301px" src="AI,%20ML,%20Deep%20Learning%20&amp;%20GenAI%20-%20Basic%20Concepts%2010b86c7395e7803fa647e41d6f824ab8/image%203.png"/></a></figure></details></li></ul></li></ul><ul id="10c86c73-95e7-80e0-9750-e29a836cf031" class="bulleted-list"><li style="list-style-type:disc">Requires even more input data than traditional ML</li></ul><ul id="10c86c73-95e7-80cc-b6a5-ea0952ed8101" class="bulleted-list"><li style="list-style-type:disc">Requires Graphical Processing Units (<strong>GPUs</strong>), which excel at <strong>highly parallel computing</strong><ul id="10c86c73-95e7-8010-b3b3-fffb155a32fd" class="block-color-blue_background bulleted-list"><li style="list-style-type:circle">💡 Nvidia currently making record profits due to their GPUs</li></ul></li></ul><h3 id="10c86c73-95e7-8021-b1ec-f6bba372d13f" class="">Neural Networks</h3><ul id="10c86c73-95e7-808d-9cba-cd287a1956f4" class="block-color-teal_background bulleted-list"><li style="list-style-type:disc">🔧 <strong>Neurons (nodes) and synapses (connections)</strong><ul id="10c86c73-95e7-806f-a5e1-f2e98a804d0e" class="block-color-blue_background toggle"><li><details open=""><summary>💡 look similar to human brain</summary><figure id="10c86c73-95e7-80bb-bedd-ffe90d5c3c2f" class="image"><a href="AI,%20ML,%20Deep%20Learning%20&amp;%20GenAI%20-%20Basic%20Concepts%2010b86c7395e7803fa647e41d6f824ab8/image%204.png"><img style="width:171px" src="AI,%20ML,%20Deep%20Learning%20&amp;%20GenAI%20-%20Basic%20Concepts%2010b86c7395e7803fa647e41d6f824ab8/image%204.png"/></a></figure></details></li></ul></li></ul><ul id="10c86c73-95e7-80b5-8afa-c9d7733c602d" class="bulleted-list"><li style="list-style-type:disc">Neurons and synapses <strong>updated by DL algorithms</strong> (very complicated math) as they process more and more training data<ul id="10c86c73-95e7-8083-875e-dc8b8ceb87bb" class="bulleted-list"><li style="list-style-type:circle">Neural networks may have billions of nodes</li></ul></li></ul><ul id="10c86c73-95e7-8017-a405-cee990337c90" class="toggle"><li><details open=""><summary>Classic example of neural network: <strong>recognize handwritten digits</strong></summary><figure id="10c86c73-95e7-80fa-94f9-f1419ec6562e" class="image"><a href="AI,%20ML,%20Deep%20Learning%20&amp;%20GenAI%20-%20Basic%20Concepts%2010b86c7395e7803fa647e41d6f824ab8/image%205.png"><img style="width:484.984375px" src="AI,%20ML,%20Deep%20Learning%20&amp;%20GenAI%20-%20Basic%20Concepts%2010b86c7395e7803fa647e41d6f824ab8/image%205.png"/></a></figure></details></li></ul><hr id="11c86c73-95e7-8039-bafb-d95e3757a62f"/><h2 id="10c86c73-95e7-806c-a89c-c7ee1bb7e29d" class="">Generative AI (GenAI)</h2><ul id="10c86c73-95e7-8055-bac1-c2c35aea1bc2" class="bulleted-list"><li style="list-style-type:disc">Intro:<figure id="10686c73-95e7-8005-b2c8-cbf59c51ad24" class="link-to-page"><a href="../Amazon%20Bedrock%2010586c7395e7807db2fcf9ad8cefdfdb/GenAI%20101%20(Generative%20AI)%2010686c7395e78005b2c8cbf59c51ad24.html">GenAI 101 (Generative AI)</a></figure></li></ul><ul id="10c86c73-95e7-80f9-9477-e87e388b5081" class="block-color-teal_background bulleted-list"><li style="list-style-type:disc">🔧 Subset of DL, focused on <strong>generating new data</strong> from lots of training data<ul id="10c86c73-95e7-8047-ab7e-c7623104356e" class="bulleted-list"><li style="list-style-type:circle"><strong>Multi-purpose FMs</strong> backed by DL neural networks (text generation neural networks, text summarization neural networks…)</li></ul><ul id="10c86c73-95e7-80e8-8340-f4d98ffe2049" class="toggle"><li><details open=""><summary>Diagram</summary><figure id="10c86c73-95e7-8095-9987-dda68efd39c9" class="image"><a href="AI,%20ML,%20Deep%20Learning%20&amp;%20GenAI%20-%20Basic%20Concepts%2010b86c7395e7803fa647e41d6f824ab8/image%206.png"><img style="width:455px" src="AI,%20ML,%20Deep%20Learning%20&amp;%20GenAI%20-%20Basic%20Concepts%2010b86c7395e7803fa647e41d6f824ab8/image%206.png"/></a></figure></details></li></ul></li></ul><div id="10c86c73-95e7-80ee-87ec-c1d2a0bf0503" class="column-list"><div id="10c86c73-95e7-80d8-adb2-c113c81b7639" style="width:50%" class="column"><h3 id="10c86c73-95e7-80e5-979f-f3bab0b10dcc" class="">GenAI Components</h3><ul id="10c86c73-95e7-8064-87c5-f8bfe534da19" class="bulleted-list"><li style="list-style-type:disc"><strong>Data Layer</strong> – collect vast amounts of data</li></ul><ul id="10c86c73-95e7-80de-a527-e02bc2b44e7a" class="bulleted-list"><li style="list-style-type:disc"><strong>ML Framework and Algorithm Layer</strong> – data scientists and engineers work together to understand use cases, requirements, and frameworks that can solve them</li></ul><ul id="10c86c73-95e7-8029-97ed-d4896c37a518" class="bulleted-list"><li style="list-style-type:disc"><strong>Model Layer</strong> – implement a model and train it, we have the structure, the parameters and functions, optimizer function</li></ul><ul id="10c86c73-95e7-80fe-81f8-f332d580a8f3" class="bulleted-list"><li style="list-style-type:disc"><strong>Application Layer</strong> – how to serve the model, and its capabilities for your users</li></ul></div><div id="10c86c73-95e7-803e-a8a1-e86c1b4c33d1" style="width:50%" class="column"><figure id="10c86c73-95e7-807c-a7a2-eb9dc8514008" class="image"><a href="AI,%20ML,%20Deep%20Learning%20&amp;%20GenAI%20-%20Basic%20Concepts%2010b86c7395e7803fa647e41d6f824ab8/image%207.png"><img src="AI,%20ML,%20Deep%20Learning%20&amp;%20GenAI%20-%20Basic%20Concepts%2010b86c7395e7803fa647e41d6f824ab8/image%207.png"/></a></figure></div></div><h3 id="10c86c73-95e7-80bf-9163-ed009ab93306" class="">Transformer Model (LLM)</h3><ul id="10c86c73-95e7-8076-84db-f6ce8e4299ba" class="bulleted-list"><li style="list-style-type:disc">Able to <strong>process a sentence as a whole</strong> (instead of word by word)<ul id="10c86c73-95e7-80bc-8e7c-eac4b309c004" class="bulleted-list"><li style="list-style-type:circle"><strong>Faster</strong> and more efficient text processing (less training time)</li></ul><ul id="10c86c73-95e7-80ed-9f7b-f72ed857b4e6" class="bulleted-list"><li style="list-style-type:circle"><strong>Self-attention mechanisms</strong> and <strong>encoders</strong> give <strong>relative importance/weight to specific words</strong> in a sentence → more coherent sentences</li></ul></li></ul><ul id="10c86c73-95e7-8006-b23d-cc7e52f94293" class="bulleted-list"><li style="list-style-type:disc">Examples: Google BERT, OpenAI ChatGPT<ul id="10c86c73-95e7-80d8-a584-e494f5b176a3" class="bulleted-list"><li style="list-style-type:circle"><strong>GPT = Generative Pre-trained Transformer</strong></li></ul></li></ul><ul id="10c86c73-95e7-8024-8393-f83fbc24a87f" class="toggle"><li><details open=""><summary>Transformer-based LLM Diagram</summary><figure id="10c86c73-95e7-807e-8521-c26a600316a0" class="image"><a href="AI,%20ML,%20Deep%20Learning%20&amp;%20GenAI%20-%20Basic%20Concepts%2010b86c7395e7803fa647e41d6f824ab8/image%208.png"><img style="width:260px" src="AI,%20ML,%20Deep%20Learning%20&amp;%20GenAI%20-%20Basic%20Concepts%2010b86c7395e7803fa647e41d6f824ab8/image%208.png"/></a></figure></details></li></ul><h3 id="10c86c73-95e7-80b4-b91c-cbc71cb44dfd" class="">Diffusion Model (e.g. Stable Diffusion)</h3><figure id="10c86c73-95e7-80fb-b84a-cd4385c08031" class="image"><a href="AI,%20ML,%20Deep%20Learning%20&amp;%20GenAI%20-%20Basic%20Concepts%2010b86c7395e7803fa647e41d6f824ab8/image%209.png"><img style="width:512.96875px" src="AI,%20ML,%20Deep%20Learning%20&amp;%20GenAI%20-%20Basic%20Concepts%2010b86c7395e7803fa647e41d6f824ab8/image%209.png"/></a></figure><h3 id="10c86c73-95e7-80f9-a463-c926e1d40762" class="">Multi-modal Models</h3><ul id="10c86c73-95e7-8027-bfdb-c567fe3f6210" class="bulleted-list"><li style="list-style-type:disc">Capable of handling multiple types of input (text, image, audio…) and/or generating multiple types of output (text, video…)</li></ul><ul id="10c86c73-95e7-80ec-a013-d45b5cd726e4" class="toggle"><li><details open=""><summary>Example: “generate a video making the picture of the cat speak the audio that is included”</summary><figure id="10c86c73-95e7-8039-b997-efeb2f2ce5c9" class="image"><a href="AI,%20ML,%20Deep%20Learning%20&amp;%20GenAI%20-%20Basic%20Concepts%2010b86c7395e7803fa647e41d6f824ab8/image%2010.png"><img style="width:287px" src="AI,%20ML,%20Deep%20Learning%20&amp;%20GenAI%20-%20Basic%20Concepts%2010b86c7395e7803fa647e41d6f824ab8/image%2010.png"/></a></figure></details></li></ul><hr id="11c86c73-95e7-80db-bab9-dfce4e944524"/><h2 id="10c86c73-95e7-8043-b67b-c2f3f8df772c" class="">Human thinking can be AI-like in different scenarios</h2><ul id="11c86c73-95e7-80e4-93a9-d64623379df4" class="bulleted-list"><li style="list-style-type:disc"><strong>AI</strong>: Sometimes we know “if this happens, then do that”<ul id="11c86c73-95e7-806e-bf42-fc80b6df639f" class="block-color-blue_background bulleted-list"><li style="list-style-type:circle">💡 e.g. <em>“if it&#x27;s raining, take an umbrella” </em></li></ul></li></ul><ul id="11c86c73-95e7-80f5-a700-ded7ba6ef900" class="bulleted-list"><li style="list-style-type:disc"><strong>ML</strong>: Sometimes we’ve seen a lot of similar things before, and we classify them<ul id="11c86c73-95e7-8072-a745-cdf7ed8d4ee1" class="block-color-blue_background bulleted-list"><li style="list-style-type:circle">💡 e.g. <em>“I have seen 1000 dogs, when I see a new dog, I&#x27;m confident it&#x27;s a dog because it follows patterns”</em></li></ul></li></ul><ul id="11c86c73-95e7-8085-a564-ca30a3568518" class="bulleted-list"><li style="list-style-type:disc"><strong>DL</strong>: Sometimes we haven’t seen something before, but we have<br/>“learned” a lot of similar concepts, so we can make a decision<br/><ul id="11c86c73-95e7-80df-ac24-d369f807234d" class="block-color-blue_background bulleted-list"><li style="list-style-type:circle">💡 e.g. <em>“I have seen cats, dogs, elephants, horses… I now see a tiger for the first time. It doesn&#x27;t look like any of the animals I’ve seen before… but I do know it&#x27;s an animal because of similar patterns”</em></li></ul></li></ul><ul id="11c86c73-95e7-80cd-87c4-ed41a2d8b9ba" class="bulleted-list"><li style="list-style-type:disc"><strong>GenAI</strong>: Sometimes, we get creative, and based on what we’ve learned, we can generate content<ul id="10c86c73-95e7-803a-85f3-f00f8eaf5f1f" class="block-color-blue_background bulleted-list"><li style="list-style-type:circle">💡 e.g. <em>“I invent a new animal: the griffin. It&#x27;s half-eagle, half-lion”</em></li></ul></li></ul><p id="10c86c73-95e7-8073-97c2-f5ffaec33053" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
