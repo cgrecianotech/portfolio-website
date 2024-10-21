@@ -56,6 +56,7 @@
         }
         .buttons {
             text-align: center;
+            margin-top: 20px;
         }
         .buttons a {
             background-color: #28a745;
@@ -86,6 +87,52 @@
             bottom: 0;
             width: 100%;
         }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                padding: 20px;
+            }
+            .right-column {
+                order: 1;
+                width: 100%;
+            }
+            .right-column h1 {
+                font-size: 1.5em; /* Smaller heading on mobile */
+            }
+            .right-column p {
+                font-size: 1em; /* Smaller text on mobile */
+            }
+            .buttons {
+                order: 2;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .left-column {
+                order: 3;
+                width: 100%;
+            }
+            .left-column img {
+                margin-bottom: 20px;
+            }
+            .buttons a {
+                margin: 10px 0;
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* Desktop styles to ensure proper layout */
+        @media (min-width: 769px) {
+            .container {
+                flex-direction: row; /* Two-column layout for desktop */
+            }
+            .buttons {
+                margin-top: 0; /* Align buttons properly in desktop */
+            }
+        }
     </style>
 </head>
 <body>
@@ -103,23 +150,23 @@
         <!-- Left Column: Image -->
         <div class="left-column">
             <img src="cgreciano.jpg" alt="Profile Picture" class="profile-img">
-            <img src="Badges.png" alt="Profile Picture" class="profile-img">
+            <img src="Badges.png" alt="Badges" class="badges-img">
         </div>
+
         <!-- Right Column: Text -->
         <div class="right-column">
             <h1>Christian Greciano</h1>
             <p>
-                Welcome! I'm Christian, also known as GlosuU in some platforms. I'm a hyperpolyglot computer engineer with more than 8 years in the IT industry (mostly experience as a backend engineer and as a Scrum Master). My current interests lie in cloud (AWS), AI, ML and NLP technologies, as well as Agile methodologies. I am also passionate about learning, teaching and education.
+                Welcome! I'm Christian, also known as GlosuU in some platforms. I'm a hyperpolyglot computer engineer with more than 8 years in the IT industry (mostly experience as a backend engineer and as a Scrum Master). My current interests lie in cloud (AWS), AI, ML, and NLP technologies, as well as Agile methodologies. I am also passionate about learning, teaching, and education.
             <p>
-                In this website I will be sharing my notes and flashcards on various subjects of my interest. For now you can find my notes and flashcards for the new AWS AI Practitioner certification (AIF-C01), which I studied for and passed recently. I hope they will be useful to you! If you liked them and they helped you, feel free to let me know by messaging me or tagging me in <a href="https://www.linkedin.com/in/christian-greciano-408930bb/">LinkedIn</a> or another social platform. I also appreciate your kind donations!
+                In this website, I will be sharing my notes and flashcards on various subjects of my interest. For now, you can find my notes and flashcards for the new AWS AI Practitioner certification (AIF-C01), which I studied for and passed recently. I hope they will be useful to you! If you liked them and they helped you, feel free to let me know by messaging me or tagging me in <a href="https://www.linkedin.com/in/christian-greciano-408930bb/">LinkedIn</a> or another social platform. I also appreciate your kind donations!
             </p>
+            <!-- Donation Buttons -->
+            <div class="buttons">
+                <a href="https://ko-fi.com/christiangreciano">Donate via Ko-Fi</a>
+                <a href="https://www.paypal.com/donate/?hosted_button_id=ZKXUFFZ7HR958">Donate via PayPal</a>
+            </div>
         </div>
-    </div>
-
-    <!-- Donation Buttons -->
-    <div class="buttons">
-        <a href="https://ko-fi.com/christiangreciano">Donate via Ko-Fi</a>
-        <a href="https://www.paypal.com/donate/?hosted_button_id=ZKXUFFZ7HR958">Donate via PayPal</a>
     </div>
 
     <!-- Footer -->
