@@ -57,16 +57,25 @@
         }
         .buttons {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 5px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            justify-content: center;
         }
         .buttons a {
             background-color: #28a745;
             color: white;
             padding: 12px 24px;
             text-decoration: none;
-            margin: 10px;
+            margin: 5px;
             border-radius: 5px;
-            font-size: 1.2em;
+            font-size: 1.1em;
+            flex: 1;
+            min-width: 130px;
+            max-width: 300px;
+            white-space: nowrap;
+            text-align: center;
         }
         .buttons a:hover {
             background-color: #218838;
@@ -170,6 +179,7 @@
             <!-- Donation Buttons -->
             <div class="buttons">
                 <a href="https://ko-fi.com/christiangreciano" target="_blank" rel="noopener noreferrer">Donate via Ko-Fi</a>
+                <a href="https://buy.stripe.com/eVa4kf08z6eM9W06oo" target="_blank" rel="noopener noreferrer">Donate via Stripe</a>
                 <a href="https://www.paypal.com/donate/?hosted_button_id=ZKXUFFZ7HR958" target="_blank" rel="noopener noreferrer">Donate via PayPal</a>
             </div>
         </div>
