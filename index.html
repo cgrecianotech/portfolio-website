@@ -62,23 +62,35 @@
             flex-wrap: wrap;
             gap: 5px;
             justify-content: center;
+            width: 100%;
         }
         .buttons a {
-            background-color: #28a745;
             color: white;
             padding: 12px 24px;
             text-decoration: none;
             margin: 5px;
             border-radius: 5px;
-            font-size: 1.1em;
-            flex: 1;
-            min-width: 130px;
-            max-width: 300px;
+            font-size: 0.95em;
+            width: 160px;
             white-space: nowrap;
             text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+            box-sizing: border-box;
         }
-        .buttons a:hover {
-            background-color: #218838;
+        .stripe-img {
+            height: 20px;
+            width: auto;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+        .stripe-button {
+            background-color: #635BFF;
+        }
+        .stripe-button:hover {
+            background-color: #4F47E5;
         }
         .profile-img {
             max-width: 100%;
@@ -124,6 +136,19 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                width: 100%;
+            }
+            .buttons a {
+                margin: 5px 0;
+                height: 40px;
+                min-height: 40px;
+                padding: 8px 16px;
+                align-self: center;
+                box-sizing: border-box;
+            }
+            .stripe-img {
+                height: 16px;
+                margin-right: 6px;
             }
             .left-column {
                 order: 3;
@@ -131,11 +156,6 @@
             }
             .left-column img {
                 margin-bottom: 20px;
-            }
-            .buttons a {
-                margin: 10px 0;
-                width: 100%;
-                text-align: center;
             }
         }
 
@@ -174,13 +194,20 @@
                 Welcome! I'm Christian, also known as GlosuU in some platforms. I'm a hyperpolyglot computer engineer with more than 8 years in the IT industry (mostly experience as a backend engineer and as a Scrum Master). My current interests lie in cloud (AWS), AI, ML, and NLP technologies, as well as Agile methodologies. I am also passionate about learning, teaching, and education.
             </p>
             <p>
-                In this website, I will be sharing my notes and flashcards on various subjects of my interest. Currently, I have study materials for several AWS certifications, as well as other IT courses. I hope they will be useful to you! If you liked them and they helped you, feel free to let me know by messaging me or tagging me in <a href="https://www.linkedin.com/in/christian-greciano-408930bb/" target="_blank" rel="noopener noreferrer">LinkedIn</a> or another social platform. I also appreciate your kind donations!
+                In this website, I will be sharing my notes and flashcards on various subjects of my interest. Currently, I have study materials for several AWS certifications, as well as other IT courses. I hope they will be useful to you! If you liked them and they helped you, feel free to let me know by messaging me or tagging me in <a href="https://www.linkedin.com/in/christian-greciano-408930bb/" target="_blank" rel="noopener noreferrer">LinkedIn</a> or another social platform. I also appreciate your kind donations! You can donate via Ko-Fi, Stripe, or PayPal.
             </p>
             <!-- Donation Buttons -->
             <div class="buttons">
-                <a href="https://ko-fi.com/christiangreciano" target="_blank" rel="noopener noreferrer">Donate via Ko-Fi</a>
-                <a href="https://buy.stripe.com/eVa4kf08z6eM9W06oo" target="_blank" rel="noopener noreferrer">Donate via Stripe</a>
-                <a href="https://www.paypal.com/donate/?hosted_button_id=ZKXUFFZ7HR958" target="_blank" rel="noopener noreferrer">Donate via PayPal</a>
+                <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Donate via Ko-Fi', '#72a4f2', 'W7W414Y3GZ');kofiwidget2.draw();</script> 
+                <a href="https://buy.stripe.com/eVa4kf08z6eM9W06oo" target="_blank" rel="noopener noreferrer" class="stripe-button">
+                    <img src="stripe.jpeg" alt="Stripe" class="stripe-img">
+                    Donate via Stripe
+                </a>
+                <form action="https://www.paypal.com/donate" method="post" target="_blank">
+                    <input type="hidden" name="hosted_button_id" value="SQFATDP9WPRGJ" />
+                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+                    <img alt="" border="0" src="https://www.paypal.com/en_FI/i/scr/pixel.gif" width="1" height="1" />
+                </form>
             </div>
         </div>
     </div>
@@ -190,5 +217,14 @@
         &copy; 2024-2025 Christian Greciano. All rights reserved.
     </footer>
 
+    <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+    <script>
+    kofiWidgetOverlay.draw('christiangreciano', {
+        'type': 'floating-chat',
+        'floating-chat.donateButton.text': '',
+        'floating-chat.donateButton.background-color': '#00b9fe',
+        'floating-chat.donateButton.text-color': '#fff'
+    });
+    </script>
 </body>
 </html>
