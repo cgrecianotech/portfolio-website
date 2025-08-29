@@ -43,7 +43,8 @@
 		<a href="#main" id="skip-link" class="visually-hidden">Skip to main content</a>
 
 		<header>
-			<a href="/" class="home-link">{{ metadata.title }}</a>
+			<a href="../index.html" class="home-link">← Home</a>
+			<div class="blog-title">{{ metadata.title }}</div>
 
 			{#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
 			<nav>
@@ -52,6 +53,11 @@
 				{%- for entry in collections.all | eleventyNavigation %}
 					<li class="nav-item"><a href="{{ entry.url }}"{% if entry.url == page.url %} aria-current="page"{% endif %}>{{ entry.title }}</a></li>
 				{%- endfor %}
+				<li class="nav-item">
+					<button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+						<span class="theme-toggle-icon">🌙</span>
+					</button>
+				</li>
 				</ul>
 			</nav>
 		</header>
@@ -66,9 +72,58 @@
 			<p>
 				<em>Built with <a href="https://www.11ty.dev/">{{ eleventy.generator }}</a></em>
 			</p>
+			<p>
+				<em>Copyright &copy; 2025 {{ metadata.author.name }}, All rights reserved.</em>
+			</p>
 		</footer>
 
 		<!-- This page `{{ page.url }}` was built on {% currentBuildDate %} -->
 		<script type="module" src="{% getBundleFileUrl "js" %}"></script>
+		
+		<script>
+			// Theme toggle functionality
+			(function() {
+				const themeToggle = document.getElementById('theme-toggle');
+				const themeToggleIcon = document.querySelector('.theme-toggle-icon');
+				const html = document.documentElement;
+				
+				// Check for saved theme preference or use device preference as default
+				function getPreferredTheme() {
+					const savedTheme = localStorage.getItem('theme');
+					if (savedTheme) {
+						return savedTheme;
+					}
+					// Check device preference
+					if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+						return 'dark';
+					}
+					return 'light';
+				}
+				
+				const currentTheme = getPreferredTheme();
+				html.setAttribute('data-theme', currentTheme);
+				updateThemeIcon(currentTheme);
+				
+				// Toggle theme on button click
+				themeToggle.addEventListener('click', () => {
+					const currentTheme = html.getAttribute('data-theme');
+					const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+					
+					html.setAttribute('data-theme', newTheme);
+					localStorage.setItem('theme', newTheme);
+					updateThemeIcon(newTheme);
+				});
+				
+				function updateThemeIcon(theme) {
+					if (theme === 'dark') {
+						themeToggleIcon.textContent = '☀️';
+						themeToggle.setAttribute('aria-label', 'Switch to light mode');
+					} else {
+						themeToggleIcon.textContent = '🌙';
+						themeToggle.setAttribute('aria-label', 'Switch to dark mode');
+					}
+				}
+			})();
+		</script>
 	</body>
 </html>
