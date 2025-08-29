@@ -60,30 +60,30 @@ export default async function(eleventyConfig) {
 	eleventyConfig.addPlugin(HtmlBasePlugin);
 	eleventyConfig.addPlugin(InputPathToUrlTransformPlugin);
 
-	eleventyConfig.addPlugin(feedPlugin, {
-		type: "atom", // or "rss", "json"
-		outputPath: "/feed/feed.xml",
-		stylesheet: "pretty-atom-feed.xsl",
-		templateData: {
-			eleventyNavigation: {
-				key: "Feed",
-				order: 4
-			}
-		},
-		collection: {
-			name: "posts",
-			limit: 10,
-		},
-		metadata: {
-			language: "en",
-			title: "CGreciano's Blog",
-			subtitle: "I write about tech, learning, and other things that interest me.",
-			base: "https://christiangreciano.com/blog",
-			author: {
-				name: "Christian Greciano"
-			}
-		}
-	});
+	// eleventyConfig.addPlugin(feedPlugin, {
+	// 	type: "atom", // or "rss", "json"
+	// 	outputPath: "/feed/feed.xml",
+	// 	stylesheet: "pretty-atom-feed.xsl",
+	// 	templateData: {
+	// 		eleventyNavigation: {
+	// 			key: "Feed",
+	// 			order: 4
+	// 		}
+	// 	},
+	// 	collection: {
+	// 		name: "posts",
+	// 		limit: 10,
+	// 	},
+	// 	metadata: {
+	// 		language: "en",
+	// 		title: "CGreciano's Blog",
+	// 		subtitle: "I write about tech, learning, and other things that interest me.",
+	// 		base: "https://christiangreciano.com/blog",
+	// 		author: {
+	// 			name: "Christian Greciano"
+	// 		}
+	// 	}
+	// });
 
 	// Image optimization: https://www.11ty.dev/docs/plugins/image/#eleventy-transform
 	eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
