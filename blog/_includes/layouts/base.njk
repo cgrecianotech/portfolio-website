@@ -7,7 +7,7 @@
 		<meta name="description" content="{{ description or metadata.description }}">
 		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
 
-		{#- Uncomment this if you'd like folks to know that you used Eleventy to build your site!  #}
+		{#- Uncomment this if you’d like folks to know that you used Eleventy to build your site!  #}
 		{#- <meta name="generator" content="{{ eleventy.generator }}"> #}
 
 		{#-
@@ -43,11 +43,6 @@
 		<a href="#main" id="skip-link" class="visually-hidden">Skip to main content</a>
 
 		<header>
-			{#- Add navigation back to main site #}
-			<div class="main-site-nav">
-				<a href="/" class="back-to-main">← Back to Main Site</a>
-			</div>
-			
 			<a href="/" class="home-link">{{ metadata.title }}</a>
 
 			{#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
@@ -70,9 +65,6 @@
 		<footer>
 			<p>
 				<em>Built with <a href="https://www.11ty.dev/">{{ eleventy.generator }}</a></em>
-			</p>
-			<p>
-				<em>&copy; 2024-2025 Christian Greciano. All rights reserved.</em>
 			</p>
 		</footer>
 

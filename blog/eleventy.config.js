@@ -6,7 +6,7 @@ import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
 
 import pluginFilters from "./_config/filters.js";
 
-/** @param {import("@11ty/eleventy").UserConfig} eleventyConfig} */
+/** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
 export default async function(eleventyConfig) {
 	// Drafts, see also _data/eleventyDataSchema.js
 	eleventyConfig.addPreprocessor("drafts", "*", (data, content) => {
@@ -57,8 +57,8 @@ export default async function(eleventyConfig) {
 		preAttributes: { tabindex: 0 }
 	});
 	eleventyConfig.addPlugin(pluginNavigation);
-	// eleventyConfig.addPlugin(HtmlBasePlugin);
-	// eleventyConfig.addPlugin(InputPathToUrlTransformPlugin);
+	eleventyConfig.addPlugin(HtmlBasePlugin);
+	eleventyConfig.addPlugin(InputPathToUrlTransformPlugin);
 
 	eleventyConfig.addPlugin(feedPlugin, {
 		type: "atom", // or "rss", "json"
@@ -76,11 +76,11 @@ export default async function(eleventyConfig) {
 		},
 		metadata: {
 			language: "en",
-			title: "Christian Greciano's Blog",
-			subtitle: "Study notes, flashcards, and insights on AWS, AI, and cloud computing.",
-			base: "https://christiangreciano.com",
+			title: "Blog Title",
+			subtitle: "This is a longer description about your blog.",
+			base: "https://example.com/",
 			author: {
-				name: "Christian Greciano"
+				name: "Your Name"
 			}
 		}
 	});
@@ -110,22 +110,13 @@ export default async function(eleventyConfig) {
 	eleventyConfig.addPlugin(pluginFilters);
 
 	eleventyConfig.addPlugin(IdAttributePlugin, {
-		// by default we use Eleventy's built-in `slugify` filter:
+		// by default we use Eleventy’s built-in `slugify` filter:
 		// slugify: eleventyConfig.getFilter("slugify"),
 		// selector: "h1,h2,h3,h4,h5,h6", // default
 	});
 
 	eleventyConfig.addShortcode("currentBuildDate", () => {
 		return (new Date()).toISOString();
-	});
-
-	// Add navigation back to main site
-	eleventyConfig.addShortcode("mainSiteNav", () => {
-		return `
-			<div class="main-site-nav">
-				<a href="/" class="back-to-main">← Back to Main Site</a>
-			</div>
-		`;
 	});
 
 	// Features to make your build faster (when you need them)
@@ -166,11 +157,12 @@ export const config = {
 	// Optional items:
 	// -----------------------------------------------------------------
 
-	// Set pathPrefix to match your blog subdirectory
-	// This tells Eleventy that the blog will be served from /blog/ subdirectory
-	pathPrefix: "/blog/",
+	// If your site deploys to a subdirectory, change `pathPrefix`.
+	// Read more: https://www.11ty.dev/docs/config/#deploy-to-a-subdirectory-with-a-path-prefix
 
 	// When paired with the HTML <base> plugin https://www.11ty.dev/docs/plugins/html-base/
 	// it will transform any absolute URLs in your HTML to include this
 	// folder name and does **not** affect where things go in the output folder.
+
+	pathPrefix: "/",
 };
