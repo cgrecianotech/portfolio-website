@@ -1,0 +1,44 @@
+{
+	"name": "portfolio-website-blog",
+	"version": "1.0.0",
+	"description": "Blog section of Christian Greciano's portfolio website built with Eleventy.",
+	"type": "module",
+	"scripts": {
+		"build": "npx @11ty/eleventy",
+		"build-nocolor": "cross-env NODE_DISABLE_COLORS=1 npx @11ty/eleventy",
+		"build-blog": "npx @11ty/eleventy --pathprefix=/blog/",
+		"start": "npx @11ty/eleventy --serve --quiet",
+		"start-blog": "npx @11ty/eleventy --pathprefix=/blog/ --serve --quiet",
+		"debug": "cross-env DEBUG=Eleventy* npx @11ty/eleventy",
+		"debugstart": "cross-env DEBUG=Eleventy* npx @11ty/eleventy --serve --quiet",
+		"benchmark": "cross-env DEBUG=Eleventy:Benchmark* npx @11ty/eleventy"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/GlosuU/portfolio-website.git"
+	},
+	"author": {
+		"name": "Christian Greciano",
+		"email": "christian.greciano@reaktor.com",
+		"url": "https://christiangreciano.com/"
+	},
+	"license": "MIT",
+	"engines": {
+		"node": ">=18"
+	},
+	"devDependencies": {
+		"@11ty/eleventy": "^3.1.2",
+		"@11ty/eleventy-img": "^6.0.4",
+		"@11ty/eleventy-navigation": "^1.0.4",
+		"@11ty/eleventy-plugin-rss": "^2.0.4",
+		"@11ty/eleventy-plugin-syntaxhighlight": "^5.0.1",
+		"cross-env": "^7.0.3",
+		"luxon": "^3.6.1",
+		"prismjs": "^1.30.0",
+		"zod": "^3.25.67",
+		"zod-validation-error": "^3.5.2"
+	},
+	"dependencies": {
+		"@zachleat/heading-anchors": "^1.0.3"
+	}
+}
