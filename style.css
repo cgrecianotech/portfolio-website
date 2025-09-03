@@ -194,7 +194,7 @@ footer {
 
 /* Mobile Styles */
 @media (max-width: 768px) {
-    .container {
+    .index-container {
         flex-direction: column;
         padding: 20px;
         margin: 10px;
@@ -251,7 +251,7 @@ footer {
 
 /* Desktop styles to ensure proper layout */
 @media (min-width: 769px) {
-    .container {
+    .index-container {
         flex-direction: row; /* Two-column layout for desktop */
     }
     .buttons {
