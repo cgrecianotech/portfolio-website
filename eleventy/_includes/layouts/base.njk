@@ -78,6 +78,8 @@
 		</footer>
 
 		<!-- This page `{{ page.url }}` was built on {% currentBuildDate %} -->
+
+		<!-- Scripts -->
 		<script type="module" src="{% getBundleFileUrl "js" %}"></script>
 		
 		<script>
@@ -125,5 +127,17 @@
 				}
 			})();
 		</script>
+
+		<script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+		<script>
+		kofiWidgetOverlay.draw('christiangreciano', {
+			'type': 'floating-chat',
+			'floating-chat.donateButton.text': '',
+			'floating-chat.donateButton.background-color': '#00b9fe',
+			'floating-chat.donateButton.text-color': '#fff'
+		});
+		</script>
+
+		<script data-collect-dnt="true" async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
 	</body>
 </html>
