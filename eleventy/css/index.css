@@ -255,6 +255,21 @@ header {
 .nav a[href][aria-current="page"] {
 	text-decoration: underline;
 }
+.nav-item a[href][aria-label="RSS Feed"] {
+	text-decoration: none;
+}
+
+/* RSS icon styling */
+.rss-icon {
+	width: 16px;
+	height: 16px;
+	color: var(--text-color);
+	transition: color 0.2s ease;
+}
+
+.nav-item a[href][aria-label="RSS Feed"]:hover .rss-icon {
+	color: var(--text-color-link-active);
+}
 
 /* Theme toggle button */
 .theme-toggle {
