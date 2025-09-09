@@ -3,5 +3,4 @@ My Portfolio Website
 
 ## TODO
 
-- Add analytics on blog pages
-- Add RSS feed to blog
+- Experiment RSS feed without Atom

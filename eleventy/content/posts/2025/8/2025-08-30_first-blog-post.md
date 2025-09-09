@@ -8,6 +8,8 @@ draft: true
 
 My first blog post
 
+<img src="/img/0002_tn_multicolored-building.jpg" eleventy:ignore>
+
 # HEADER
 
 OMG REally!!??
