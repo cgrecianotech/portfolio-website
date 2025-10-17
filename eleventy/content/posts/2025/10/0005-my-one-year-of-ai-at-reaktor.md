@@ -2,7 +2,7 @@
 title: My one year of AI in Reaktor
 description: My first year at Reaktor has had a clear focus on AI. Upskilling in AI and working in AI projects and gigs has been quite positive to my career.
 date: 2025-10-01
-tags: ["AI", "GenAI", "Reaktor", "AWS certifications", "tech career"]
+tags: ["AI", "GenAI", "Reaktor", "AWS Certifications", "Tech Career"]
 ---
 <img src="/img/0005_tn_first-year-of-ai-at-reaktor.png" alt="Digital illustration of a human brain depicted as a glowing circuit board." eleventy:ignore>
 
@@ -44,8 +44,6 @@ Was it all worth it? I do think so, as adding "AI" to my job title in LinkedIn h
 	- [My notes for AWS AIF-C01 and MLA-C01](https://www.christiangreciano.com/notes.html)
 	- [My flashcards for AWS AIF-C01 and MLA-C01](https://www.christiangreciano.com/flashcards.html)
 - Two client gigs on AI projects (RAG chatbots)
-	- [Orion LLM Cube](https://www.youtube.com/watch?v=4GQvLSLKbpo)
-	- Epic Games PSR Chatbot
 - Member of Reaktor's GenAI team
 	- [Wrote a summary of the HARVEST event in Reaktor's official blog](https://www.christiangreciano.com/flashcards.html)
 	- Trained dev teams on AI developer tools for [University of Helsinki's research in collaboration with Reaktor](https://www.helsinki.fi/en/news/artificial-intelligence/reaktor-and-university-helsinki-launch-pioneering-research-genais-impact-software-development-productivity)
