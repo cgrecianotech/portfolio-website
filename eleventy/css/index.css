@@ -4,7 +4,7 @@
 	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
 }
 
-/* Theme colors */
+/* Light Theme */
 :root {
 	--color-gray-20: #e0e0e0;
 	--color-gray-50: #C0C0C0;
@@ -20,7 +20,7 @@
 	--syntax-tab-size: 2;
 }
 
-/* Dark theme */
+/* Dark Theme */
 [data-theme="dark"] {
 	--color-gray-20: #e0e0e0;
 	--color-gray-50: #C0C0C0;
@@ -34,7 +34,39 @@
 	--background-color: #15202b;
 }
 
-/* Fallback for users with system dark mode preference */
+/* Theme toggle button */
+.theme-toggle {
+	background: rgba(0, 0, 0, 0.1);
+	border: none;
+	cursor: pointer;
+	padding: 0.5em;
+	font-size: 1em;
+	border-radius: 4px;
+	transition: background-color 0.2s ease;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	line-height: 1;
+}
+
+.theme-toggle:hover {
+	background-color: var(--color-gray-20);
+}
+
+.theme-toggle-icon {
+	font-size: 1.2em;
+}
+
+/* Dark mode styles for theme toggle */
+[data-theme="dark"] .theme-toggle {
+	background: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+	background-color: var(--color-gray-90);
+}
+
+/* Fallback for users with dark mode preference */
 @media (prefers-color-scheme: dark) {
 	:root:not([data-theme]) {
 		--color-gray-20: #e0e0e0;
@@ -47,6 +79,14 @@
 		--text-color-link-visited: #a6a6f8;
 
 		--background-color: #15202b;
+	}
+
+	:root:not([data-theme]) .theme-toggle {
+		background: rgba(255, 255, 255, 0.1);
+	}
+	
+	:root:not([data-theme]) .theme-toggle:hover {
+		background-color: var(--color-gray-90);
 	}
 }
 
@@ -269,48 +309,6 @@ header {
 
 .nav-item a[href][aria-label="RSS Feed"]:hover .rss-icon {
 	color: var(--text-color-link-active);
-}
-
-/* Theme toggle button */
-.theme-toggle {
-	background: rgba(0, 0, 0, 0.1);
-	border: none;
-	cursor: pointer;
-	padding: 0.5em;
-	font-size: 1em;
-	border-radius: 4px;
-	transition: background-color 0.2s ease;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	line-height: 1;
-}
-
-.theme-toggle:hover {
-	background-color: var(--color-gray-20);
-}
-
-.theme-toggle-icon {
-	font-size: 1.2em;
-}
-
-/* Dark mode styles for theme toggle */
-[data-theme="dark"] .theme-toggle {
-	background: rgba(255, 255, 255, 0.1);
-}
-
-[data-theme="dark"] .theme-toggle:hover {
-	background-color: var(--color-gray-90);
-}
-
-@media (prefers-color-scheme: dark) {
-	:root:not([data-theme]) .theme-toggle {
-		background: rgba(255, 255, 255, 0.1);
-	}
-	
-	:root:not([data-theme]) .theme-toggle:hover {
-		background-color: var(--color-gray-90);
-	}
 }
 
 /* Posts list */

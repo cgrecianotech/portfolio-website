@@ -9,7 +9,7 @@ import pluginFilters from "./_config/filters.js";
 
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
 export default async function(eleventyConfig) {
-	// Drafts, see also _data/eleventyDataSchema.js
+	//// DRAFTS: see also _data/eleventyDataSchema.js
 	eleventyConfig.addPreprocessor("drafts", "*", (data, content) => {
 		if (data.draft) {
       data.title = `${data.title} (draft)`;
@@ -20,28 +20,26 @@ export default async function(eleventyConfig) {
 		}
 	});
 
-	// Copy the contents of the `public` folder to the output folder
-	// For example, `./public/css/` ends up in `_site/css/`
+	//// PASSTHROUGH COPY: Copy `public` dir (to output dir) and `feed/pretty-atom-feed.xsl`
 	eleventyConfig
 		.addPassthroughCopy({
 			"./public/": "/"
 		})
 		.addPassthroughCopy("./content/feed/pretty-atom-feed.xsl");
 
-	// Run Eleventy when these files change:
-	// https://www.11ty.dev/docs/watch-serve/#add-your-own-watch-targets
+	//// WATCH TARGETS: Run Eleventy when these files change:
+	//// https://www.11ty.dev/docs/watch-serve/#add-your-own-watch-targets
 
 	// Watch CSS files
 	eleventyConfig.addWatchTarget("css/**/*.css");
 	// Watch images for the image pipeline.
 	eleventyConfig.addWatchTarget("content/**/*.{svg,webp,png,jpg,jpeg,gif}");
-
-	// Per-page bundles, see https://github.com/11ty/eleventy-plugin-bundle
-	// Bundle <style> content and adds a {% css %} paired shortcode
+	
+	//// BUNDLES: Bundle CSS and JS to dist directory
+	// Bundle <style> content and add a {% css %} paired shortcode
 	eleventyConfig.addBundle("css", {
 		toFileDirectory: "dist",
 		// Add all <style> content to `css` bundle (use <style eleventy:ignore> to opt-out)
-		// Supported selectors: https://www.npmjs.com/package/posthtml-match-helper
 		bundleHtmlContentFromSelector: "style",
 	});
 
@@ -49,11 +47,10 @@ export default async function(eleventyConfig) {
 	eleventyConfig.addBundle("js", {
 		toFileDirectory: "dist",
 		// Add all <script> content to the `js` bundle (use <script eleventy:ignore> to opt-out)
-		// Supported selectors: https://www.npmjs.com/package/posthtml-match-helper
 		bundleHtmlContentFromSelector: "script",
 	});
 
-	// Official plugins
+	//// PLUGINS
 	eleventyConfig.addPlugin(pluginSyntaxHighlight, {
 		preAttributes: { tabindex: 0 }
 	});
@@ -88,12 +85,10 @@ export default async function(eleventyConfig) {
 		}
 	});
 
-	// Image optimization: https://www.11ty.dev/docs/plugins/image/#eleventy-transform
+	//// IMAGE OPTIMIZATION: https://www.11ty.dev/docs/plugins/image/#eleventy-transform
 	eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
 		// Output formats for each image.
 		formats: ["avif", "webp", "auto"],
-
-		// widths: ["auto"],
 
 		failOnError: false,
 		htmlOptions: {
@@ -109,11 +104,12 @@ export default async function(eleventyConfig) {
 		},
 	});
 
-	// Filters
+	//// FILTERS
 	eleventyConfig.addPlugin(pluginFilters);
 
+	//// ID ATTRIBUTE PLUGIN
 	eleventyConfig.addPlugin(IdAttributePlugin, {
-		// by default we use Eleventy’s built-in `slugify` filter:
+		// Uses Eleventy’s built-in `slugify` filter by default:
 		// slugify: eleventyConfig.getFilter("slugify"),
 		// selector: "h1,h2,h3,h4,h5,h6", // default
 	});
@@ -121,14 +117,6 @@ export default async function(eleventyConfig) {
 	eleventyConfig.addShortcode("currentBuildDate", () => {
 		return (new Date()).toISOString();
 	});
-
-	// Features to make your build faster (when you need them)
-
-	// If your passthrough copy gets heavy and cumbersome, add this line
-	// to emulate the file copy on the dev server. Learn more:
-	// https://www.11ty.dev/docs/copy/#emulate-passthrough-copy-during-serve
-
-	// eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
 };
 
 export const config = {
@@ -138,8 +126,6 @@ export const config = {
 		"md",
 		"njk",
 		"html",
-		"liquid",
-		"11ty.js",
 	],
 
 	// Pre-process *.md files with: (default: `liquid`)

@@ -207,10 +207,10 @@ footer {
         width: 100%;
     }
     .right-column h1 {
-        font-size: 1.5em; /* Smaller heading on mobile */
+        font-size: 1.5em;
     }
     .right-column p {
-        font-size: 1em; /* Smaller text on mobile */
+        font-size: 1em;
     }
     .buttons {
         order: 2;
@@ -252,9 +252,9 @@ footer {
 /* Desktop styles to ensure proper layout */
 @media (min-width: 769px) {
     .index-container {
-        flex-direction: row; /* Two-column layout for desktop */
+        flex-direction: row;
     }
     .buttons {
-        margin-top: 0; /* Align buttons properly in desktop */
+        margin-top: 0;
     }
 }

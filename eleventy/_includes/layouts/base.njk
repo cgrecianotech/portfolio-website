@@ -7,34 +7,14 @@
 		<meta name="description" content="{{ description or metadata.description }}">
 		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
 
-		{#- Uncomment this if you’d like folks to know that you used Eleventy to build your site!  #}
-		{#- <meta name="generator" content="{{ eleventy.generator }}"> #}
-
-		{#-
-		Plain-text bundles are provided via the `eleventy-plugin-bundle` plugin:
-		1. CSS:
-			* Add to a per-page bundle using `{% css %}{% endcss %}`
-			* Retrieve bundle content using `{% getBundle "css" %}` or `{% getBundleFileUrl "css" %}`
-		2. Or for JavaScript:
-			* Add to a per-page bundle using `{% js %}{% endjs %}`
-			* Retrieve via `{% getBundle "js" %}` or `{% getBundleFileUrl "js" %}`
-		3. Learn more: https://github.com/11ty/eleventy-plugin-bundle
-		#}
+		{#- Generator: Eleventy - cf #}
+		<meta name="generator" content="{{ eleventy.generator }}">
 
 		{#- Add CSS to the bundle #}
-		<style>/* This is an arbitrary CSS string added to the bundle */</style>
-
-		{#- Add the contents of a file to the bundle #}
 		<style>{% include "css/index.css" %}</style>
-
-		{#- Or you can add from node_modules #}
-		{# <style>{% include "node_modules/something.css" %}</style> #}
 
 		{#- Render the CSS bundle using inlined CSS (for the fastest site performance in production) #}
 		<style>{% getBundle "css" %}</style>
-
-		{#- Renders the CSS bundle using a separate file, if you can't set CSP directive style-src: 'unsafe-inline' #}
-		{#- <link rel="stylesheet" href="{% getBundleFileUrl "css" %}"> #}
 
 		{#- Add the heading-anchors web component to the JavaScript bundle #}
 		<script type="module">{% include "node_modules/@zachleat/heading-anchors/heading-anchors.js" %}</script>
@@ -46,7 +26,7 @@
 			<a href="https://christiangreciano.com" class="home-link">← Home</a>
 			<div class="blog-title">{{ metadata.title }}</div>
 
-			{#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
+			{#- Blog Navigation #}
 			<nav>
 				<h2 class="visually-hidden">Top level navigation menu</h2>
 				<ul class="nav">
@@ -55,6 +35,7 @@
 				{%- endfor %}
 				<li class="nav-item">
 					<a href="/feed/feed.xml" aria-label="RSS Feed">
+						{#- RSS Icon #}
 						<svg class="rss-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
 							<circle cx="2" cy="14" r="2"/>
 							<path d="M2 4a10 10 0 0 1 10 10h-2a8 8 0 0 0-8-8V4z"/>
@@ -86,13 +67,13 @@
 			</p>
 		</footer>
 
-		<!-- This page `{{ page.url }}` was built on {% currentBuildDate %} -->
-
 		<!-- Scripts -->
+
+		{#- Add the JavaScript bundle to the page #}
 		<script type="module" src="{% getBundleFileUrl "js" %}"></script>
 		
+		{#- Theme toggle functionality: Dark/Light mode #}
 		<script>
-			// Theme toggle functionality
 			(function() {
 				const themeToggle = document.getElementById('theme-toggle');
 				const themeToggleIcon = document.querySelector('.theme-toggle-icon');
@@ -137,6 +118,7 @@
 			})();
 		</script>
 
+		{#- Donations: Ko-fi Floating Chat Widget #}
 		<script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
 		<script>
 		kofiWidgetOverlay.draw('christiangreciano', {
@@ -147,6 +129,7 @@
 		});
 		</script>
 
+		{#- Analytics:Simple Analytics #}
 		<script data-collect-dnt="true" async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
 	</body>
 </html>
