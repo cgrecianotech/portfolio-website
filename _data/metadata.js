@@ -1,8 +1,8 @@
 export default {
-	title: "CGreciano's Blog",
-	url: "https://christiangreciano.com/blog",
+	title: "Christian Greciano",
+	url: "https://christiangreciano.com",
 	language: "en",
-	description: "I write about tech, learning, and other things that interest me.",
+	description: "Christian Greciano's Portfolio Website, built with Eleventy",
 	author: {
 		name: "Christian Greciano",
 		email: "christian.greciano@reaktor.com",

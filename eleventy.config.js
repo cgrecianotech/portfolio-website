@@ -64,12 +64,6 @@ export default async function(eleventyConfig) {
 		type: "atom", // or "rss", "json"
 		outputPath: "/feed/feed.xml",
 		stylesheet: "pretty-atom-feed.xsl",
-		// templateData: {
-		// 	eleventyNavigation: {
-		// 		key: "Feed",
-		// 		order: 4
-		// 	}
-		// },
 		collection: {
 			name: "posts",
 			limit: 10,
@@ -139,18 +133,17 @@ export const config = {
 		input: "content",          // default: "."
 		includes: "../_includes",  // default: "_includes" (`input` relative)
 		data: "../_data",          // default: "_data" (`input` relative)
-		output: "../blog"
+		output: "_site"
 	},
 
 	// -----------------------------------------------------------------
 	// Optional items:
 	// -----------------------------------------------------------------
 
-	// Blog deployed to /blog/ within website's root folder
-	// Read more: https://www.11ty.dev/docs/config/#deploy-to-a-subdirectory-with-a-path-prefix
-	pathPrefix: "/blog/",
+	// Change path prefix to deploy to a different directory (default is ./_site/)
+	// Absolute URLs will be prefixed with this path prefix thanks to
+	// HTML <base> plugin https://www.11ty.dev/docs/plugins/html-base/
+	// (does **not** affect where things go in the output folder).
 
-	// When paired with the HTML <base> plugin https://www.11ty.dev/docs/plugins/html-base/
-	// it will transform any absolute URLs in your HTML to include this
-	// folder name and does **not** affect where things go in the output folder.
+	// pathPrefix: "/",
 };
