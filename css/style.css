@@ -192,6 +192,16 @@ footer {
     width: 100%;
 }
 
+/* Desktop Styles to ensure proper layout */
+@media (min-width: 769px) {
+    .index-container {
+        flex-direction: row;
+    }
+    .buttons {
+        margin-top: 0;
+    }
+}
+
 /* Mobile Styles */
 @media (max-width: 768px) {
     .index-container {
@@ -246,15 +256,5 @@ footer {
     }
     .error-description {
         font-size: 1em;
-    }
-}
-
-/* Desktop styles to ensure proper layout */
-@media (min-width: 769px) {
-    .index-container {
-        flex-direction: row;
-    }
-    .buttons {
-        margin-top: 0;
     }
 }
