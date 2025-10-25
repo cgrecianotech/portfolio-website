@@ -89,9 +89,14 @@ body {
 	font-family: var(--font-family);
 	color: var(--text-color);
 	background-color: var(--background-color);
+    height: 100%;
 }
 html {
 	overflow-y: scroll;
+}
+body {
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -134,9 +139,9 @@ a[href]:active {
 	color: var(--text-color-link-active);
 }
 
-main,
-footer {
+main {
 	padding: 1rem;
+	flex: 1;
 }
 main :first-child {
 	margin-top: 0;
@@ -191,6 +196,7 @@ iframe {
 	display: flex;
     justify-content: center;
     align-items: center;
+    flex-shrink: 0;
 }
 .navbar a[href] {
     display: block;
@@ -379,6 +385,7 @@ footer {
     color: var(--contrast-text-color);
     bottom: 0;
     width: 100%;
+    margin-top: auto;
 }
 
 footer a[href] {

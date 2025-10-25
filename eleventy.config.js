@@ -72,7 +72,7 @@ export default async function(eleventyConfig) {
 			language: "en",
 			title: "CGreciano's Blog",
 			subtitle: "I write about tech, learning, and other things that interest me.",
-			base: "https://christiangreciano.com",
+			base: "https://christiangreciano.com/blog",
 			author: {
 				name: "Christian Greciano"
 			}
