@@ -2,7 +2,7 @@
 title: Why I'm starting this blog
 description: My very first blog post expounds my own 7 reasons to start blogging
 date: 2025-08-30
-tags: ["blogging", "content creation", "beginner"]
+tags: ["Blogging", "Content Creation", "Beginner"]
 ---
 <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1973&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="writing with a fountain pen">
 
