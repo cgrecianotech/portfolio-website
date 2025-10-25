@@ -1,0 +1,21 @@
+---
+layout: layouts/base.njk
+---
+<style>{% include "css/blog.css" %}</style>
+<div class="blog-container">
+	<a href="#main" id="skip-link" class="visually-hidden">Skip to main content</a>
+	<header>
+		<div class="blog-title">{{ metadata.blogTitle }}</div>
+
+		{#- Blog Navigation #}
+		<nav>
+			<h2 class="visually-hidden">Blog level navigation menu</h2>
+			<ul class="nav">
+			{%- for entry in collections.all | eleventyNavigation %}
+				<li class="nav-item"><a href="{{ entry.url }}"{% if entry.url == page.url %} aria-current="page"{% endif %}>{{ entry.title }}</a></li>
+			{%- endfor %}
+			</ul>
+		</nav>
+	</header>
+	{{ content | safe }}
+</div>
