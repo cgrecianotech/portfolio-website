@@ -8,7 +8,7 @@ draft: true
 
 My first blog post
 
-<img src="{{ 0002_tn_multicolored-building.jpg | blogImagePath }}" eleventy:ignore>
+<img src="{{ '0002_tn_multicolored-building.jpg' | blogImagePath }}" eleventy:ignore>
 
 # HEADER
 
