@@ -40,4 +40,9 @@ export default function(eleventyConfig) {
 	eleventyConfig.addFilter("sortAlphabetically", strings =>
 		(strings || []).sort((b, a) => b.localeCompare(a))
 	);
+
+	// Automatically prepend the blog image path to the image path
+	eleventyConfig.addFilter("blogImagePath", imagePath =>
+		`/images/blog-img/${imagePath}`
+  	);
 };

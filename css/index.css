@@ -6,24 +6,25 @@
 
 /* Light Theme */
 :root {
-	--background-color: #f4f4f4;
+	--background-color: #f9fad5;
 	--container-background-color: white;
-	--container-background-color-hover: #f2f2f2;
+	--table-even-row-background-color: #f7f4d2c2;
+	--table-background-color-hover: #f2f2f2;
 
 	--color-gray-20: #e0e0e0;
 	--color-gray-50: #C0C0C0;
 	--color-gray-90: #333;
 
 	--text-color: var(--color-gray-90);
-	--text-color-link: #082840;
+	--text-color-link: #2e74b5;
 	--text-color-link-active: #5f2b48;
-	--text-color-link-visited: #17050F;
+	--text-color-link-visited: darkblue;
 
 	--syntax-tab-size: 2;
 
 	--contrast-background-color: #15202b;
 	--contrast-text-color: #dad8d8;
-	--contrast-text-color-link: #1493fb;
+	--contrast-text-color-link: #7dbff5;
 	--contrast-text-color-link-active: #6969f7;
 }
 
@@ -31,20 +32,21 @@
 [data-theme="dark"] {
 	--background-color: #15202b;
 	--container-background-color: #1c2a36;
-	--container-background-color-hover: #37414b;
+	--table-even-row-background-color: rgb(42, 41, 41);
+	--table-background-color-hover: #37414b;
 
 	--color-gray-20: #e0e0e0;
 	--color-gray-50: #C0C0C0;
 	--color-gray-90: #dad8d8;
 
 	--text-color: var(--color-gray-90);
-	--text-color-link: #1493fb;
+	--text-color-link: #7dbff5;
 	--text-color-link-active: #6969f7;
 	--text-color-link-visited: #a6a6f8;
 
-	--contrast-background-color: #f4f4f4;
+	--contrast-background-color: #f9fad5;
 	--contrast-text-color: #333;
-	--contrast-text-color-link: #082840;
+	--contrast-text-color-link: darkblue;
 	--contrast-text-color-link-active: #5f2b48;
 }
 
@@ -93,7 +95,7 @@ html {
 }
 
 header {
-	border-bottom: 1px dashed var(--color-gray-20);
+	border-bottom: 1px dashed var(--color-gray-90);
 	display: flex;
 	gap: 1em;
 	flex-wrap: wrap;
@@ -272,7 +274,13 @@ th {
     font-weight: bold;
 }
 tr:hover {
-    background-color: var(--container-background-color-hover);
+    background-color: var(--table-background-color-hover);
+}
+tr:nth-child(even) {
+    background-color: var(--table-even-row-background-color);
+}
+tr:nth-child(even):hover {
+    background-color: var(--table-background-color-hover);
 }
 
 h1 {
@@ -362,6 +370,8 @@ h1 {
     color: #888;
     margin-bottom: 30px;
 }
+
+/* Footer */
 footer {
     text-align: center;
     padding: 10px;

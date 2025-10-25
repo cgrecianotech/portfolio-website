@@ -21,11 +21,11 @@ To avoid being overly verbose, I will use the following abbreviations for the AW
 ## AWS AI Certification path completed
 This announcement did not catch us by surprise in the AWS Certifications community. Ever since MLE Associate became available, we suspected that ML Specialty would soon be deprecated. After all, both of those certifications have about an 80% overlap in their content, just the focus on them was different (MLE Associate focuses on everything pertaining to Amazon SageMaker and MLOps in AWS, whereas ML Specialty also tested your knowledge in vendor-agnostic ML and AI concepts). ML Specialty also felt outdated since it did not cover any modern GenAI material.
 
-<img src="/img/0006_aws_ai_cert_path.png" alt="The complete AWS AI Certification path tree" eleventy:ignore>
+<img src="{{ '0006_aws_ai_cert_path.png' | blogImagePath }}" alt="The complete AWS AI Certification path tree" eleventy:ignore>
 
 AWS has been deprecating Specialty certifications in the past years and moving towards Associate and Professional certifications instead. Hence we all speculated that they would soon announce a new Pro cert that would renew DEA and MLE Associate certifications when you passed it. This would follow the pattern we see in the AWS DevOps Pro certification, which renews AWS Developer Associate and AWS CloudOps Associate certifications if you pass it. It makes sense.
 
-<img src="/img/0006_aws_devops_path.png" alt="The AWS Devops Certification path tree" eleventy:ignore>
+<img src="{{ '0006_aws_devops_path.png' | blogImagePath }}" alt="The AWS Devops Certification path tree" eleventy:ignore>
 
 ## Naming
 The naming of the new cert raises some eyebrows. We were expecting it to maybe be "MLOps Professional", but instead they chose "GenAI Developer Professional". This is probably due to marketing reasons, since "GenAI developer" probably catches the attention of sales and recruitment people more than the term "MLOps engineer".
@@ -34,7 +34,7 @@ If we get technical, a GenAI dev does not need to know much of the underlying ML
 
 As an analogy, a car driver only needs to know how to drive a car and that's it, but a car mechanic **does** need to know some of the inner workings of a car in order to repair or maintain it. The car driver would be the GenAI developer and the car mechanic would be the MLOps engineer.
 
-<img src="/img/0006_cardriver_vs_carmechanic.png" alt="A picture with a car driver to the left and a car mechanic to the right" eleventy:ignore>
+<img src="{{ '0006_cardriver_vs_carmechanic.png' | blogImagePath }}" alt="A picture with a car driver to the left and a car mechanic to the right" eleventy:ignore>
 
 If the GenAI Dev Pro cert builds on top of MLE Associate and DEA, then we can expect the cert to test you on MLOps engineering too, not just on GenAI development. So the naming is not super accurate.
 
@@ -44,7 +44,7 @@ As an AI software engineer who has been developing GenAI apps for the past year,
 ### Should you take the exam in Beta?
 One incentive to take the exam early is to get the **Early Adopter badge**. I personally have both Early Adopter badges for AIF and MLE Associate, although honestly I haven't seen these badges be of any worth or use. They look good and shiny on a CV I guess. In the case of AIF I took the exam while it was still in Beta, whereas MLE Associate I took after it came out of Beta. We still don't know if AWS will continue to give an Early Adopter badge for GenAI Dev Pro when it comes out of Beta or not, they did so for AIF and MLE Associate for a few months, but there's no guarantee they'll do the same this time.
 
-<img src="/img/0006_early_adopter_badges.png" alt="Certification badges of AWS AIF-C01, AWS MLA-C01, and their corresponding Early Adopter badges" eleventy:ignore>
+<img src="{{ '0006_early_adopter_badges.png' | blogImagePath }}" alt="Certification badges of AWS AIF-C01, AWS MLA-C01, and their corresponding Early Adopter badges" eleventy:ignore>
 
 Another incentive to try out the exam in Beta is that it's **50% cheaper** than usual. That's no joke because the AWS Pro certs normally cost $300, they are pricy.
 
@@ -53,7 +53,7 @@ However Beta exams also have their drawbacks. First of all, **you can NOT retake
 ### What's the real worth of this new AWS GenAI Dev Pro cert?
 It's no secret that AWS have lagged behind its main competitors, Azure and GCP, when it comes to AI. Heck, even though we hosted our app infrastructure in AWS in the two main AI projects that I worked on in the past year, we still called OpenAI endpoints when it was time to use an LLM. For one of the projects, we called an external GCP service to do Optical Character Recognition (OCR) instead of using the AWS-native Amazon Textract service. So far I haven't used Amazon Bedrock or Amazon SageMaker in my production projects (just for cert preparation), and companies seem to be relying on non-AWS services more when it comes to AI. It's uncertain whether knowing about AWS AI services will bring much value to candidates in the AI market.
 
-<img src="/img/0006_cube_llm_infra.png" alt="A snapshot of the infrastructure architecture of the Cube LLM project, where the AI services were NOT AWS-native" eleventy:ignore>
+<img src="{{ '0006_cube_llm_infra.png' | blogImagePath }}" alt="A snapshot of the infrastructure architecture of the Cube LLM project, where the AI services were NOT AWS-native" eleventy:ignore>
 
 AWS are desperately trying to break through in the AI services market and this new cert probably is part of that strategy. They have created and curated a complete AI career path with their new certifications, whereas they have left their existing certifications mostly untouched instead of requiring AI knowledge in them. Most people agree that the AWS Solutions Architect certifications (Associate and Professional) are the most valuable AWS certifications since they test your knowledge of the vast AWS ecosystem, but for those you barely need to know a few things of their AI services. We will have to see if these new AI certifications gain any traction and value in a tough and competitive market, right now it's too early to say.
 
