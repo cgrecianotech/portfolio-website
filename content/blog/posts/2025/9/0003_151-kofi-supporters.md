@@ -4,7 +4,7 @@ description: "A significant milestone in my side hustle: 151 different people bo
 date: 2025-09-11
 tags: ["ko-fi", "side hustle", "milestone", "online store"]
 ---
-<img src="/img/0003_tn_151_ko-fi_supporters.png" alt="Screenshot of CGreciano's Ko-Fi page, showing 151 followers" eleventy:ignore>
+<img src="{{ 0003_tn_151_ko-fi_supporters.png | blogImagePath }}" alt="Screenshot of CGreciano's Ko-Fi page, showing 151 followers" eleventy:ignore>
 
 I just achieved a cool milestone: [151 supporters in Ko-Fi](https://ko-fi.com/christiangreciano). I like the number 151 because it reminds me of the original 151 Pokémon from Generation 1, it makes me feel very nostalgic. 🎵 "Catch 'em! Catch 'em! Gotta catch 'em all!" 🎵 Just like nowadays there are more than 1000 Pokémon, I hope my number of supporters continues to grow, reaching high numbers too!
 

@@ -26,7 +26,7 @@ Writing down everything that you should potentially do something about sounded e
 
 Before reading this book, I had kinda given up on paper. If we can have it digital and sync it through all our devices, what purpose does paper have any more? But the author is a die-hard paper fan. He enumerates tons of reasons why you should consider plain old paper and pen. And he isn't dismissive of digital tools. I learned that it's not a paper vs digital debate. Paper and digital are companions, not rivals. Because of Allen, I now have started using paper again, and I have a physical in-tray for the first time. I still love my digital stuff, but I no longer seek to do everything in front of a screen, and it has felt amazingly good. Handling physical tools reminded me of some nice feelings from my school days too!
 
-<img src="/img/0004_gtd_physical_trays.png" alt="A photo of my physical trays on my desk" eleventy:ignore>
+<img src="{{ '0004_gtd_physical_trays.png' | blogImagePath }}" alt="A photo of my physical trays on my desk" eleventy:ignore>
 
 <center>My physical trays: supplies, INBOX, and Read/Review</center>
 

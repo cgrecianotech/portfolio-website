@@ -4,7 +4,7 @@ description: My first year at Reaktor has had a clear focus on AI. Upskilling in
 date: 2025-10-01
 tags: ["AI", "GenAI", "Reaktor", "AWS Certifications", "Tech Career"]
 ---
-<img src="/img/0005_tn_first-year-of-ai-at-reaktor.png" alt="Digital illustration of a human brain depicted as a glowing circuit board." eleventy:ignore>
+<img src="{{ '0005_tn_first-year-of-ai-at-reaktor.png' | blogImagePath }}" alt="Digital illustration of a human brain depicted as a glowing circuit board." eleventy:ignore>
 
 I recently reached my 1-year mark at [Reaktor](https://www.reaktor.com/en-fi) as a software consultant and, when looking back, I was surprised at how much stuff had happened in that year. For example, I got four [AWS certifications](https://aws.amazon.com/certification/) and a [Scrum Master certification](https://www.scrumalliance.org/get-certified/scrum-master-track/certified-scrummaster) during that year. And it has also been a year since I started journaling seriously every week in [Obsidian](https://obsidian.md/). Most outstanding, probably, has been my focus on AI during this year.
 
@@ -18,7 +18,7 @@ During this year I had two client gigs at Reaktor, and both had mainly to do wit
 
 Apart from my client gigs, I have been very active working on GenAI within and outside Reaktor. I have been part of Reaktor's internal GenAI team to spread awareness and training to the whole company. I have also organized meetups and events internally and externally (e.g. collaborated with [Symposium AI](https://www.symposiumai.net/) to organize an AI event 2 weeks ago at Reaktor's premises).
 
-<img src="/img/0005_genai_team_reaktor.png" alt="A LinkedIn post of me having dinner with Reaktor's GenAI team" eleventy:ignore>
+<img src="{{ '0005_genai_team_reaktor.png' | blogImagePath }}" alt="A LinkedIn post of me having dinner with Reaktor's GenAI team" eleventy:ignore>
 
 <center>
 
@@ -28,7 +28,7 @@ Apart from my client gigs, I have been very active working on GenAI within and o
 
 <br>
 
-<img src="/img/0005_symposiumai_reaktor.png" alt="A LinkedIn post of the Symposium AI event at Reaktor's premises" eleventy:ignore>
+<img src="{{ '0005_symposiumai_reaktor.png' | blogImagePath }}" alt="A LinkedIn post of the Symposium AI event at Reaktor's premises" eleventy:ignore>
 
 <center>
 
