@@ -15,7 +15,13 @@ layout: layouts/blog.njk
 	{%- endfor %}
 </ul>
 
-<p><strong><span class="post-wordcount">{{ content | wordCount }} words</span></strong></p>
+{% set readingTimeResult = content | estimatedReadingTime %}
+<p>
+	<strong>
+		<span class="post-wordcount">{{ readingTimeResult.wordCount }} words</span>
+		<span class="post-readingtime">({{ readingTimeResult.readingTime }})</span>
+	</strong>
+</p>
 
 {{ content | safe }}
 
