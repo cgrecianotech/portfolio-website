@@ -67,8 +67,18 @@
 	font-size: 0.8125em; /* 13px /16 */
 	color: var(--color-gray-90);
 }
+.postlist-description {
+	font-size: 0.9375em; /* 15px /16 */
+	color: var(--color-gray-90);
+}
 .postlist-date {
 	word-spacing: -0.5px;
+	flex-basis: 100%;
+	padding-left: .25em;
+}
+.postlist-description {
+	flex-basis: 100%;
+	padding-left: .25em;
 }
 .postlist-link {
 	font-size: 1.1875em; /* 19px /16 */
@@ -94,6 +104,15 @@
 }
 .postlist-item > .post-tag {
 	align-self: center;
+}
+
+/* Postlist separator */
+.postlist-separator {
+	border: none;
+	border-top: 1px solid var(--color-gray-50, #ccc);
+	margin: 0.5em 0;
+	width: 100%;
+	flex-basis: 100%;
 }
 
 /* Tags list */

@@ -45,4 +45,24 @@ export default function(eleventyConfig) {
 	eleventyConfig.addFilter("blogImagePath", imagePath =>
 		`/images/blog-img/${imagePath}`
   	);
+
+	// EstimatedReadingTime: Count words and calculate reading time of a string (usually blog post content)
+	eleventyConfig.addFilter("estimatedReadingTime", (str, wordsPerMinute = 200) => {
+		if (!str) return { "wordCount": 0, "readingTime": "~0 mins read" };
+
+		// Remove HTML tags, then decode HTML entities, then trim spaces
+		const textOnly = str.replace(/<[^>]*>/g, '').replace(/&[a-z]+;/gi, ' ').trim();
+		// Split the text into words, then filter out empty words
+		const wordsArray = textOnly ? textOnly.split(/\s+/).filter(word => word.length > 0) : [];
+		const wordCount = wordsArray.length;
+		
+		// Calculate reading time
+		const minutes = Math.ceil(wordCount / wordsPerMinute);
+		const readingTime = minutes === 1 ? "~1 min read" : `~${minutes} mins read`;
+		
+		return { 
+			"wordCount": wordCount,
+			"readingTime": readingTime
+		};
+	});
 };
