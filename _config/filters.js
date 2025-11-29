@@ -47,7 +47,7 @@ export default function(eleventyConfig) {
   	);
 
 	// EstimatedReadingTime: Count words and calculate reading time of a string (usually blog post content)
-	eleventyConfig.addFilter("estimatedReadingTime", (str, wordsPerMinute = 200) => {
+	eleventyConfig.addFilter("estimatedReadingTime", (str, wordsPerMinute = 175) => {
 		if (!str) return { "wordCount": 0, "readingTime": "~0 mins read" };
 
 		// Remove HTML tags, then decode HTML entities, then trim spaces

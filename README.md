@@ -2,6 +2,7 @@
 Christian Greciano's Portfolio Website, built with [Eleventy](https://www.11ty.dev/). Links to study materials (notes and flashcards) and a blog are accessible.
 
 ## TODO
+- Add an icon to website (for e.g. browsers)
 - Experiment RSS feed without Atom
 - Consider renewing index, notes, and flashcards sites, maybe update them to .md files
 - Consider moving social media and donation buttons to a different site
