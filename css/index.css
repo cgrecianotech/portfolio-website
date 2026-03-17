@@ -243,7 +243,7 @@ iframe {
     margin: 20px auto;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 900px;
+    max-width: min(1200px, 95vw);
     justify-content: center;
     align-items: center;
 }
@@ -311,8 +311,8 @@ h1 {
     margin-bottom: 30px;
 }
 .left-column {
-    flex: 1;
-    padding-right: 20px;
+    flex: 1.75;
+    padding-right: 5px;
     text-align: center;
 }
 .right-column {
@@ -369,14 +369,14 @@ h1 {
 .profile-img {
     max-width: 100%;
     border-radius: 8px;
-    width: 200px;
+    width: 180px;
     height: auto;
     margin-bottom: 15px;
 }
 .badges-img {
     max-width: 100%;
     border-radius: 8px;
-    width: 300px;
+    width: 480px;
     height: auto;
 }
 
@@ -468,7 +468,7 @@ footer a[href]:hover {
         flex-wrap: wrap;
         justify-content: space-around;
     }
-    
+
     .navbar a[href],
     .navbar button {
         padding: 10px 8px;
@@ -476,16 +476,16 @@ footer a[href]:hover {
         flex: 1;
         min-width: 0;
     }
-    
+
     /* Force line break after Blog */
     .navbar a[href="/blog/index.njk"] {
         order: 4;
     }
-    
+
     .navbar a[href="/feed/feed.xml"] {
         order: 5;
     }
-    
+
     .navbar button {
         order: 6;
     }
@@ -535,6 +535,10 @@ footer a[href]:hover {
     .left-column img {
         margin-bottom: 20px;
     }
+    .badges-img {
+        width: 400px;
+        max-width: 100%;
+    }
     .error-code {
         font-size: 6em;
     }
@@ -549,18 +553,18 @@ footer a[href]:hover {
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
     }
-    
+
     .social-button {
         padding: 10px 8px;
         font-size: 0.8em;
         min-height: 44px;
     }
-    
+
     .social-button .social-icon {
         width: 16px;
         height: 16px;
     }
-    
+
     .social-button span {
         font-size: 0.75em;
     }
@@ -571,18 +575,18 @@ footer a[href]:hover {
         grid-template-columns: 1fr;
         gap: 8px;
     }
-    
+
     .social-button {
         padding: 12px 16px;
         font-size: 0.9em;
         min-height: 48px;
     }
-    
+
     .social-button .social-icon {
         width: 20px;
         height: 20px;
     }
-    
+
     .social-button span {
         font-size: 0.85em;
     }
