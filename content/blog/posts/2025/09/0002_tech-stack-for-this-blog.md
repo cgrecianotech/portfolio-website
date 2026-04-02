@@ -3,6 +3,7 @@ title: Tech Stack for this Blog
 description: A brief description of the tech stack I'm initially using for my blog, and why I chose this tech stack and discarded other options
 date: 2025-09-08
 tags: ["Blogging", "Eleventy", "Data Ownership", "Static Site Generator"]
+thumbnail_image: "https://images.unsplash.com/photo-1724331340434-caf61e68c168?q=80&w=2428&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 ---
 <img src="https://images.unsplash.com/photo-1724331340434-caf61e68c168?q=80&w=2428&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="a-computer-generated-image-of-a-multicolored-building">
 

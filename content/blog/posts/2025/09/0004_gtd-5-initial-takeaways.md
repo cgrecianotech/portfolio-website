@@ -4,6 +4,7 @@ description: I read Getting Things Done (GTD) by David Allen for the first time 
 date: 2025-09-24
 tags: ["GTD", "Beginner", "Productivity"]
 draft: false
+thumbnail_video: "https://youtu.be/-d1f04WdsUE"
 ---
 
 https://youtu.be/-d1f04WdsUE

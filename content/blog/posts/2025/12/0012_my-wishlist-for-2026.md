@@ -3,6 +3,7 @@ title: My Wishlist for 2026
 description: AI continues to advance and permeate our tools and lives. I wrote down a few wishes for 2026, let's hope some or all can come true! Happy new year 2026 everyone!
 date: 2025-12-29
 tags: ["Wishlist", "New Year", "AI", "Human Connection", "Tech Career"]
+thumbnail_image: "0012_tn_wishlist-for-2026.jpg"
 ---
 <img src="{{ '0012_tn_wishlist-for-2026.jpg' | blogImagePath }}" alt="A simple image of the year 2025 dropping its last 5 to let the year 2026 come through" eleventy:ignore>
 

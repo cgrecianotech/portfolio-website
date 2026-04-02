@@ -3,6 +3,7 @@ title: Still trusting Notion with your data?
 description: A recently viral Reddit post on how a user lost tons of important data in Notion made me reflect, once more, why I prefer having my important files and documents locally in Obsidian. This awareness should extend to all apps and services you use, convenience might come at a cost.
 date: 2026-01-31
 tags: ["Notion", "Obsidian", "Note Taking", "Data Ownership"]
+thumbnail_image: "0014_tn_still-trusting-your-data-to-notion.png"
 ---
 <img src="{{ '0014_tn_still-trusting-your-data-to-notion.png' | blogImagePath }}" alt="A small statue of a sad man who lost access to his documents in Notion" eleventy:ignore>
 

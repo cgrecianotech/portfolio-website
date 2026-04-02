@@ -3,6 +3,7 @@ title: My one year of AI in Reaktor
 description: My first year at Reaktor has had a clear focus on AI. Upskilling in AI and working in AI projects and gigs has been quite positive to my career.
 date: 2025-10-01
 tags: ["AI", "GenAI", "Reaktor", "AWS Certifications", "Tech Career"]
+thumbnail_image: "0005_tn_first-year-of-ai-at-reaktor.png"
 ---
 <img src="{{ '0005_tn_first-year-of-ai-at-reaktor.png' | blogImagePath }}" alt="Digital illustration of a human brain depicted as a glowing circuit board." eleventy:ignore>
 

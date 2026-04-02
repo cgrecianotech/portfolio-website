@@ -3,6 +3,7 @@ title: A tribute to the GOAT of MTG Kai Budde
 description: "Kai Budde passed away recently. He is considered the GOAT of Magic: the Gathering by many. I had the honor to play against him back in June 2024 during MTG Pro Tour in Amsterdam. I write about this experience as well as thoughts on life and Kai's legacy."
 date: 2026-03-07
 tags: ["Strategy Games", "MTG", "Tribute", "Competition", "Life Focus"]
+thumbnail_video: "https://www.youtube.com/watch?v=nELcQYaqTmk"
 ---
 https://www.youtube.com/watch?v=nELcQYaqTmk
 

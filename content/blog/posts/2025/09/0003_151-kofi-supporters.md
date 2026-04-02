@@ -3,6 +3,7 @@ title: I reached 151 supporters in Ko-Fi
 description: "A significant milestone in my side hustle: 151 different people bought digital items in my Ko-Fi store"
 date: 2025-09-11
 tags: ["Ko-fi", "Side Hustle", "Milestone", "Online Store"]
+thumbnail_image: "0003_tn_151_ko-fi_supporters.png"
 ---
 <img src="{{ '0003_tn_151_ko-fi_supporters.png' | blogImagePath }}" alt="Screenshot of CGreciano's Ko-Fi page, showing 151 followers" eleventy:ignore>
 

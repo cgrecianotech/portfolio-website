@@ -46,6 +46,39 @@ export default function(eleventyConfig) {
 		`/images/blog-img/${imagePath}`
   	);
 
+	/** List thumbnails: local filenames → /images/blog-img/…; http(s) URLs pass through */
+	eleventyConfig.addFilter("blogListImageUrl", (src) => {
+		if (!src || typeof src !== "string") return "";
+		const t = src.trim();
+		if (/^https?:\/\//i.test(t)) return t;
+		return `/images/blog-img/${t}`;
+	});
+
+	function youtubeVideoId(url) {
+		if (!url || typeof url !== "string") return "";
+		try {
+			const u = new URL(url.trim());
+			if (u.hostname === "youtu.be") {
+				return u.pathname.replace(/^\//, "").split("/")[0] || "";
+			}
+			if (u.hostname.endsWith("youtube.com")) {
+				if (u.pathname.startsWith("/embed/")) {
+					return u.pathname.split("/")[2] || "";
+				}
+				return u.searchParams.get("v") || "";
+			}
+		} catch {
+			return "";
+		}
+		return "";
+	}
+
+	/** YouTube watch/embed URLs → static poster URL for list thumbnails */
+	eleventyConfig.addFilter("youtubePosterUrl", (url) => {
+		const id = youtubeVideoId(url);
+		return id ? `https://i.ytimg.com/vi/${id}/hqdefault.jpg` : "";
+	});
+
 	// EstimatedReadingTime: Count words and calculate reading time of a string (usually blog post content)
 	eleventyConfig.addFilter("estimatedReadingTime", (str, wordsPerMinute = 175) => {
 		if (!str) return { "wordCount": 0, "readingTime": "~0 mins read" };

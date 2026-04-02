@@ -3,6 +3,7 @@ title: I played LinkedIn Queens during a whole year
 description: To celebrate my one-year streak of playing LinkedIn Queens, I write about how games have influenced me professionally and why short games like Queens have some nice benefits if you play them.
 date: 2025-11-10
 tags: ["LinkedIn", "Strategy Games", "Problem Solving"]
+thumbnail_image: "0009_tn_one-year-linkedin-queens.png"
 ---
 <img src="{{ '0009_tn_one-year-linkedin-queens.png' | blogImagePath }}" alt="Photo of a boy scout in sunny nature" eleventy:ignore>
 

@@ -4,6 +4,7 @@ description: The AWS AI Certification path is now complete with the newly announ
 date: 2025-10-16
 tags: ["AI", "GenAI", "MLOps", "AWS Certifications", "AIP-C01", "Tech Career"]
 draft: false
+thumbnail_video: "https://www.youtube.com/watch?v=ORlPPSim37Q"
 ---
 https://www.youtube.com/watch?v=ORlPPSim37Q
 

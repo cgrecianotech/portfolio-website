@@ -1,21 +1,45 @@
 <ol reversed class="postlist" style="--postlist-index: {{ (postslistCounter or postslist.length) + 1 }}">
 {%- for post in postslist | reverse %}
+	{%- set thumbUrl = "" %}
+	{%- if post.data.thumbnail_image %}
+		{%- set thumbUrl = post.data.thumbnail_image | blogListImageUrl %}
+	{%- elif post.data.thumbnail_video %}
+		{%- set thumbUrl = post.data.thumbnail_video | youtubePosterUrl %}
+	{%- endif %}
 	<li class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
-		<a href="{{ post.url }}" class="postlist-link">
-			{% if post.data.title %}
-				{{ post.data.title }}
-			{% else %}
-				<code>{{ post.url }}</code>
+		<a href="{{ post.url }}" class="postlist-card">
+			{% if thumbUrl %}
+			<div class="postlist-media">
+				<img
+					class="postlist-thumb"
+					src="{{ thumbUrl }}"
+					alt=""
+					loading="lazy"
+					decoding="async"
+					width="320"
+					height="180"
+					eleventy:ignore
+				/>
+			</div>
 			{% endif %}
+			<div class="postlist-body">
+				<span class="postlist-link">
+					{% if post.data.title %}
+						{{ post.data.title }}
+					{% else %}
+						<code>{{ post.url }}</code>
+					{% endif %}
+				</span>
+				{% set readingTimeResult = post.content | estimatedReadingTime %}
+				<time class="postlist-date" datetime="{{ post.date | htmlDateString }}">
+					{{ post.date | readableDate("LLLL yyyy") }}
+					<strong>({{ readingTimeResult.readingTime }})</strong>
+				</time>
+				{% if post.data.description %}
+				<p class="postlist-description"><i>{{ post.data.description }}</i></p>
+				{% endif %}
+			</div>
 		</a>
-		{% set readingTimeResult = post.content | estimatedReadingTime %}
-		<time class="postlist-date" datetime="{{ post.date | htmlDateString }}">
-			{{ post.date | readableDate("LLLL yyyy") }}
-			<strong>({{ readingTimeResult.readingTime }})</strong>
-		</time>
-		{% if post.data.description %}
-		<p class="postlist-description"><i>{{ post.data.description }}</i></p>
-		{% endif %}
 		<hr class="postlist-separator" />
 	</li>
 {%- endfor %}

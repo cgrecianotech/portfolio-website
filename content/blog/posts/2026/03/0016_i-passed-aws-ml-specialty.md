@@ -3,6 +3,7 @@ title: I passed AWS Machine Learning — Specialty (MLS-C01)
 description: Even though it's retiring soon, I prepared for and passed the AWS ML Specialty certification. It quizzes you more on generic data science and ML knowledge than the other AWS AI certs.
 date: 2026-03-17
 tags: ["AWS Certifications", "ML", "DL", "AWS Exam Prep", "AI"]
+thumbnail_image: "0016_tn_passed-aws-ml-specialty.png"
 ---
 <img src="{{ '0016_tn_passed-aws-ml-specialty.png' | blogImagePath }}" alt="The email I received from Credly with my AWS ML Specialty badge" eleventy:ignore>
 
