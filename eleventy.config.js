@@ -4,6 +4,8 @@ import pluginSyntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import pluginNavigation from "@11ty/eleventy-navigation";
 import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
 import embedEverythingPlugin from "eleventy-plugin-embed-everything";
+import markdownIt from "markdown-it";
+import markdownItLinkAttributes from "markdown-it-link-attributes";
 
 import pluginFilters from "./_config/filters.js";
 
@@ -30,11 +32,26 @@ export default async function(eleventyConfig) {
 	//// WATCH TARGETS: Run Eleventy when these files change:
 	//// https://www.11ty.dev/docs/watch-serve/#add-your-own-watch-targets
 
+	//// LIBRARIES
+	// Make external markdown links open in a new tab safely.
+	const md = markdownIt({
+		html: true,
+		linkify: true,
+		typographer: true,
+	}).use(markdownItLinkAttributes, {
+		matcher: (href) => /^https?:\/\//.test(href),
+		attrs: {
+			target: "_blank",
+			rel: "noopener noreferrer",
+		},
+	});
+	eleventyConfig.setLibrary("md", md);
+
 	// Watch CSS files
 	eleventyConfig.addWatchTarget("css/**/*.css");
 	// Watch images for the image pipeline.
 	eleventyConfig.addWatchTarget("content/**/*.{svg,webp,png,jpg,jpeg,gif}");
-	
+
 	//// BUNDLES: Bundle CSS and JS to dist directory
 	// Bundle <style> content and add a {% css %} paired shortcode
 	eleventyConfig.addBundle("css", {

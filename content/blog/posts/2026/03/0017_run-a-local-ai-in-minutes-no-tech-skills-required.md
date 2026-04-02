@@ -8,12 +8,12 @@ https://www.youtube.com/watch?v=L-I75_Lb_Ig
 
 It's 2026 and hence you're most likely already using AI tools such as ChatGPT, Claude, or Gemini. You're probably also worried about the rising costs of using these AI tools and there's good reason to be: vendors of these tools are [rising prices and/or introducing ads](https://www.reuters.com/business/media-telecom/openai-expand-ads-chatgpt-all-free-low-cost-users-information-reports-2026-03-21/) to try to be profitable. If you are entrenched on AI workflows and becoming dependent on a certain vendor, what will you do if the vendor spikes their prices to something you can no longer afford?
 
-The antidote for your worries is using local AI! By running a free and open-source AI model in your machine and hardware, you can say goodbye to monthly subscriptions and ads! You might be scared of trying to install local AI on your computer and think it's a complicated setup, but I assure you, it is surprisingly simple to do so, as I will show you in this blog post. If you're here just for the instructions, jump directly to the [Step-by-step installation of your local AI](#step-by-step-installation-of-your-local-ai) section. Before that section I want to first explain the tradeoffs between using local AI and cloud AI and then briefly present the AI stack of tools we will use to deploy AI models locally.
+The antidote for your worries is using **local AI**! By running a free and open-source AI model in your machine and hardware, you can say goodbye to monthly subscriptions and ads! You might be scared of trying to install local AI on your computer and think it's a complicated setup, but I assure you, it is surprisingly simple to do so, as I will show you in this blog post. If you're here just for the instructions, jump directly to the [Step-by-step installation of your local AI](#step-by-step-installation-of-your-local-ai) section. Before that section I want to first explain the tradeoffs between using local AI and cloud AI and then briefly present the AI stack of tools we will use to deploy AI models locally.
 
 ## Tradeoffs between local AI and cloud/SaaS AI
-SaaS stands for "Software-as-a-Service": many of the online apps you use, like Gmail, Netflix, Spotify... are examples of SaaS. ChatGPT, Claude, etc are also SaaS, AI SaaS to be specific. Let's be very clear on the pros and cons of running your local AI versus using an AI SaaS, i.e. a vendor's AI hosted in the cloud. If you run your local AI, you are hosting the AI model(s) in your own hardware, which means:
+SaaS stands for *"Software-as-a-Service"*: many of the online apps you use, like Gmail, Netflix, Spotify... are examples of SaaS. ChatGPT, Claude, etc are also SaaS, AI SaaS to be specific. Let's be very clear on the pros and cons of running your local AI versus using an AI SaaS, i.e. a vendor's AI hosted in the cloud. If you run your local AI, you are hosting the AI model(s) in your own hardware, which means:
 - 👍 **No subscription fees and no ads.** Compare using Netflix or having video files locally on your computer: if you have the video file of your favorite movie in your machine, you can reproduce it as many times as you want from now until forever, without having to consume ads or paying a subscription to Netflix.
-- 👍 **No internet dependency -> low latency (super fast transmission), can work offline.** The AI is in your hardware. Your requests to it and its responses to you travel almost instantly within your machine, whereas accessing an AI SaaS means traversing the internet. This advantage is really noticeable if your internet connection is unstable and/or slow.
+- 👍 **No internet dependency → low latency (super fast transmission), can work offline.** The AI is in your hardware. Your requests to it and its responses to you travel almost instantly within your machine, whereas accessing an AI SaaS means traversing the internet. This advantage is really noticeable if your internet connection is unstable and/or slow.
 	- ‼ Note that this advantage does NOT guarantee that your local AI will always be faster than an AI SaaS! If your local AI needs to "warm up", if it's bottlenecked by resources in your machine, or if you're using a slow reasoning model, that extra waiting time might be higher than waiting for responses and requests to traverse the internet.
 - 👍 **Much more data privacy.** This is very important for many users. While you can disable cloud AI from using your data to train their models, your data is still traversing the internet and is still being stored in the vendor's servers. What's worse, cloud AI models can learn enough about you and store sensitive stuff about you in their long-term memory. What guarantee do you have that vendors won't sell your data to third parties for targeted ads (or worse things)? Notice how social media knows you scarily well? By using a local AI, your data stays in your machine, and thus stays private.
 
@@ -55,7 +55,7 @@ This proposed stack is really simple, but there are many ways and alternatives t
 <img src="{{ '0017_tutorial-02-open-webui-container-runs.png' | blogImagePath }}" alt="Screenshot of Docker Desktop with running container of Open WebUI" eleventy:ignore>
 </center>
 
-7. Open WebUI is ready to be loaded in your browser! Click on the "Port(s)" link in Docker Desktop for the container (should say `3000:8080`), or navigate to http://localhost:3000
+7. Open WebUI is ready to be loaded in your browser! Click on the "Port(s)" link in Docker Desktop for the container (should say `3000:8080`), or navigate to [http://localhost:3000](http://localhost:3000)
 8. Create an admin login for Open WebUI (don't worry, this login is needed only for local use, and it stays local).
 
 <center>
@@ -85,7 +85,7 @@ Photo by [Ashita Mata](https://unsplash.com/@mataashita?utm_source=unsplash&utm_
 <img src="{{ '0017_tutorial-06-open-webui-llama3-2-runs.png' | blogImagePath }}" alt="Screenshot of Open WebUI showing Llama3.2 as being installed" eleventy:ignore>
 </center>
 
-14. Now that our model is downloaded, we can chat with it! Go to New Chat on the top-left corner, and talk with your local AI!
+14. Now that our model is downloaded, we can chat with it! Go to "New Chat" on the top-left corner, and talk with your local AI!
 
 <center>
 <img src="{{ '0017_tutorial-07-open-webui-chat-interface.png' | blogImagePath }}" alt="Screenshot of the Local AI chat interface in Open WebUI" eleventy:ignore>
