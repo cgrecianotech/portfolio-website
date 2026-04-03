@@ -3,6 +3,7 @@ title: Run your Local AI in less than 15 minutes! (no tech skills required)
 description: Running AI models locally on your machine means no subscription fees and no ads. It's also surprisingly easy to do. This is a step-by-step guide for beginners to install a simple local AI stack (Docker, Ollama, and Open WebUI). No tech skills required!
 date: 2026-03-30
 tags: ["AI", "Local AI", "Docker", "Ollama", "Open WebUI", "Tutorial", "Beginner"]
+thumbnail_image: "0017_tn_local-ai-in-minutes.png"
 ---
 https://www.youtube.com/watch?v=L-I75_Lb_Ig
 

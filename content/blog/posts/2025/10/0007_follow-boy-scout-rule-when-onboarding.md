@@ -3,6 +3,7 @@ title: Always follow the boy scout rule during onboarding
 description: Onboarding to a new company, team, or project can be thrilling, but blockers like lacking accesses or secrets can make it challenging. Something small yet significant you can always do in the beginning is give feedback and improve the documentation.
 date: 2025-10-25
 tags: ["Onboarding", "Consulting", "Beginner", "Documentation"]
+thumbnail_image: "0007_tn_boy-scout-when-onboarding.jpg"
 ---
 <img src="{{ '0007_tn_boy-scout-when-onboarding.jpg' | blogImagePath }}" alt="Photo of a boy scout in sunny nature" eleventy:ignore>
 

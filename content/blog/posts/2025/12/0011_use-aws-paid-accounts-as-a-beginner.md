@@ -3,6 +3,7 @@ title: Avoid Free-plan AWS accounts, even if you're a beginner to cloud
 description: Although many have asked AWS to implement free playground/sandbox environments for learning, I believe the new Free-plan AWS accounts are not really that useful for serious learning. Instead, learn to manage budgets and monitor costs right from the get-go.
 date: 2025-12-15
 tags: ["Cloud", "AWS", "Beginner", "Pricing"]
+thumbnail_image: "0011_tn_use-paid-aws-accounts.png"
 ---
 https://www.youtube.com/watch?v=RCVO6AUUo-4
 

@@ -3,7 +3,7 @@ title: AWS announces its new GenAI Developer Professional certification
 description: The AWS AI Certification path is now complete with the newly announced Generative AI Developer — Professional certification. Will YOU be pursuing it?
 date: 2025-10-16
 tags: ["AI", "GenAI", "MLOps", "AWS Certifications", "AIP-C01", "Tech Career"]
-draft: false
+thumbnail_image: "0006_tn_aws_genaidev_pro.png"
 ---
 https://www.youtube.com/watch?v=ORlPPSim37Q
 

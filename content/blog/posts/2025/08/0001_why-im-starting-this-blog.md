@@ -3,8 +3,9 @@ title: Why I'm starting this blog
 description: My very first blog post expounds my own 7 reasons to start blogging
 date: 2025-08-30
 tags: ["Blogging", "Content Creation", "Beginner"]
+thumbnail_image: "0001_tn_fountain_pen_writing.jpg"
 ---
-<img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1973&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="writing with a fountain pen">
+<img src="{{ '0001_tn_fountain_pen_writing.jpg' | blogImagePath }}" alt="writing with a fountain pen" eleventy:ignore>
 
 <center>
 
@@ -12,7 +13,7 @@ Photo by [Aaron Burden](https://unsplash.com/@aaronburden?utm_content=creditCopy
 
 </center>
 
->“Every journey begins with a single step.”  
+>“Every journey begins with a single step.”
 >― Lao Tzu
 
 I did it! I've been wanting to start this blog for quite a while now, and today marks my first blog post, or my first step! 🥳 Now I know that starting is not the same as finishing. And in the context of blogging, where there isn't even a finish line, starting is not the same as staying consistent. But taking that very first step is far from trivial: many things are left undone because we don't even start them. So you can bet I'm celebrating this start! Celebrate with me by reading why I even started in the first place!

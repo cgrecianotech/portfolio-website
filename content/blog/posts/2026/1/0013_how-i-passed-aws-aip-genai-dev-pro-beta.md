@@ -3,6 +3,7 @@ title: How I passed AWS AIP-C01 (Generative AI Developer Professional) in Beta
 description: The AWS AIP-C01 Beta was one of the toughest exams I have ever taken, but I'm extremely delighted to say that I passed! Prep time was tight, and 85 questions in 4 hours was exhausting. In this post I go into details of the exam experience and my study materials.
 date: 2026-01-19
 tags: ["AWS Certifications", "AI", "GenAI", "AIP-C01", "AWS Exam Prep"]
+thumbnail_image: "0013_tn_i-passed-aws-aip-beta.png"
 ---
 https://www.youtube.com/watch?v=Qpahqhd6Do8
 

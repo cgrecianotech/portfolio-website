@@ -3,6 +3,7 @@ title: The AWS GenAI Dev Pro (AIP-C01) Certification Beta is now live
 description: One can now register for the Beta exam of the new AWS Generative AI Developer — Professional certification (AWS AIP-C01). The official exam guide and exam prep material in AWS Skill Builder are also available. I'm excited to take this cert!
 date: 2025-11-29
 tags: ["AWS Certifications", "AI", "GenAI", "AIP-C01", "AWS Exam Prep"]
+thumbnail_image: "0010_tn_aws-aip-beta-is-live.png"
 ---
 https://www.youtube.com/watch?v=BkoDzagPDCw
 
