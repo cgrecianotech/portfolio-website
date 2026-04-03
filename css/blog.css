@@ -1,8 +1,7 @@
 /* ~25–50–25 on wide viewports: cap at half the viewport, with readable bounds */
 .blog-container {
-    width: 100%;
     margin: 0 auto;
-    max-width: min(100%, max(36rem, min(72rem, 50vw)));
+    max-width: 48em;
 }
 
 .blog-title {
