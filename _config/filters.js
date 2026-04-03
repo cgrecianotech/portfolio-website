@@ -37,6 +37,29 @@ export default function(eleventyConfig) {
 		return (tags || []).filter(tag => ["all", "posts"].indexOf(tag) === -1);
 	});
 
+	// BlogPostSerial: returns blog post's serial number.
+	/**
+	 * Serial extracted from the four-digit prefix on blog post filenames like `0017_slug.md`,
+	 * matching `^\d{4}_` (not `2025-08-30_…`). Serial shown without leading zeros on the site;
+	 * zeros stay in filenames for sort order. Optional front matter `post_serial` (string or number)
+	 * overrides when a file breaks the convention.
+	 */
+	eleventyConfig.addFilter("blogPostSerial", (post) => {
+		function digitsToDisplay(d) {
+			if (d === undefined || d === null || d === "") return "";
+			const s = String(d).trim();
+			if (!/^\d+$/.test(s)) return s;
+			return String(parseInt(s, 10));
+		}
+		const override = post?.data?.post_serial;
+		if (override !== undefined && override !== null && override !== "") {
+			return digitsToDisplay(String(override).trim());
+		}
+		const slug = post?.fileSlug || post?.page?.fileSlug || "";
+		const m = slug.match(/^(\d{4})_/);
+		return m ? digitsToDisplay(m[1]) : "";
+	});
+
 	eleventyConfig.addFilter("sortAlphabetically", strings =>
 		(strings || []).sort((b, a) => b.localeCompare(a))
 	);

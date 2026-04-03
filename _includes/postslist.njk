@@ -1,4 +1,4 @@
-<ol reversed class="postlist" style="--postlist-index: {{ (postslistCounter or postslist.length) + 1 }}">
+<ol reversed class="postlist">
 {%- for post in postslist | reverse %}
 	{%- set thumbUrl = "" %}
 	{%- if post.data.thumbnail_image %}
@@ -23,7 +23,8 @@
 				/>
 			</div>
 			{% endif %}
-			<div class="postlist-body">
+			{%- set postSerial = post | blogPostSerial %}
+			<div class="postlist-body{% if postSerial %} postlist-body-numbered{% endif %}"{% if postSerial %} data-post-serial="{{ postSerial }}"{% endif %}>
 				<span class="postlist-link">
 					{% if post.data.title %}
 						{{ post.data.title }}

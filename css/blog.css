@@ -43,12 +43,10 @@
 
 /* Posts list */
 .postlist {
-	counter-reset: start-from var(--postlist-index);
 	list-style: none;
 	padding: 0;
 }
 .postlist-item {
-	counter-increment: start-from -1;
 	margin-bottom: 1em;
 }
 .postlist-card {
@@ -121,9 +119,12 @@
 	flex: 0 0 2rem;
 	min-width: 0;
 	pointer-events: none;
-	content: "" counter(start-from, decimal-leading-zero) ". ";
+	content: "";
 	line-height: 100%;
 	text-align: right;
+}
+.postlist-body-numbered:before {
+	content: attr(data-post-serial) ". ";
 }
 .postlist-date,
 .postlist-body:before {
