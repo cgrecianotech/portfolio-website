@@ -44,15 +44,7 @@ export default function(eleventyConfig) {
 	// Automatically prepend the blog image path to the image path
 	eleventyConfig.addFilter("blogImagePath", imagePath =>
 		`/images/blog-img/${imagePath}`
-  	);
-
-	/** List thumbnails: local filenames → /images/blog-img/…; http(s) URLs pass through */
-	eleventyConfig.addFilter("blogListImageUrl", (src) => {
-		if (!src || typeof src !== "string") return "";
-		const t = src.trim();
-		if (/^https?:\/\//i.test(t)) return t;
-		return `/images/blog-img/${t}`;
-	});
+	);
 
 	function youtubeVideoId(url) {
 		if (!url || typeof url !== "string") return "";
@@ -73,8 +65,9 @@ export default function(eleventyConfig) {
 		return "";
 	}
 
-	/** YouTube watch/embed URLs → static poster URL for list thumbnails */
-	eleventyConfig.addFilter("youtubePosterUrl", (url) => {
+	// YouTubeThumbnailUrl: YouTube watch/embed URLs → static poster URL for blog posts list thumbnails
+	// NOTE: Just a fallback in case thumbnail_image not provided in the front matter.
+	eleventyConfig.addFilter("youtubeThumbnailUrl", (url) => {
 		const id = youtubeVideoId(url);
 		return id ? `https://i.ytimg.com/vi/${id}/hqdefault.jpg` : "";
 	});
@@ -88,12 +81,12 @@ export default function(eleventyConfig) {
 		// Split the text into words, then filter out empty words
 		const wordsArray = textOnly ? textOnly.split(/\s+/).filter(word => word.length > 0) : [];
 		const wordCount = wordsArray.length;
-		
+
 		// Calculate reading time
 		const minutes = Math.ceil(wordCount / wordsPerMinute);
 		const readingTime = minutes === 1 ? "~1 min read" : `~${minutes} mins read`;
-		
-		return { 
+
+		return {
 			"wordCount": wordCount,
 			"readingTime": readingTime
 		};

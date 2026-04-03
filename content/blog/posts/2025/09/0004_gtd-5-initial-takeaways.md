@@ -3,11 +3,9 @@ title: My 5 takeaways from Getting Things Done (GTD) on my first read
 description: I read Getting Things Done (GTD) by David Allen for the first time this summer. It sparked a lot of excitement in the productivity and organization front. I write my 5 personal takeaways from studying the book, as a GTD beginner.
 date: 2025-09-24
 tags: ["GTD", "Beginner", "Productivity"]
-draft: false
-thumbnail_video: "https://youtu.be/-d1f04WdsUE"
+thumbnail_image: "0004_tn_gtd-5-initial-takeaways.png"
 ---
-
-https://youtu.be/-d1f04WdsUE
+https://www.youtube.com/watch?v=-d1f04WdsUE
 
 *NOTE: The following article is available in video form in YouTube (video embedded above), in case you prefer watching to reading.*
 

@@ -90,7 +90,7 @@
 	text-align: right;
 	margin-left: -1.5rem;
 }
-/* Counter stays in the text column when a thumbnail occupies the left grid track */
+/** Counter stays in the text column when a thumbnail occupies the left grid track */
 .postlist-card:has(.postlist-media) .postlist-body:before {
 	margin-left: 0;
 }

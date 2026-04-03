@@ -3,7 +3,7 @@ title: How to import an .apkg file into Anki
 description: An .apkg file contains a deck of flashcards for the Anki application. You can get .apkg files publicly from Anki's official shared decks website, or privately from friends or via purchase. In this blog post I showcase the import process.
 date: 2025-11-04
 tags: ["Anki", "Tutorial"]
-thumbnail_video: "https://www.youtube.com/watch?v=g046hgb05Ow"
+thumbnail_image: "0008_tn_import-apkg-to-anki.png"
 ---
 https://www.youtube.com/watch?v=g046hgb05Ow
 
@@ -31,7 +31,7 @@ Unless you want to tweak something, just click "Import". You will be notified of
  Clicking on "Show" will direct you to Anki's browser, where you can see the imported cards in detail. If you go back to the home view, the deck will now appear in your list of decks:
 
 <img src="{{ '0008_apkg2anki_3.png' | blogImagePath }}" alt="Photo of a boy scout in sunny nature" eleventy:ignore>
- 
+
  Congrats! You can now start studying the deck by clicking on it!
 
 ## Importing .apkg files in other platforms
