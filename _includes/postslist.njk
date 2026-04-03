@@ -3,6 +3,7 @@
 	{%- set thumbUrl = "" %}
 	{%- if post.data.thumbnail_image %}
 		{%- set thumbUrl = post.data.thumbnail_image | blogImagePath %}
+	{# Failsafe: thumbnail_image should always be provided, but if not, use thumbnail_video #}
 	{%- elif post.data.thumbnail_video %}
 		{%- set thumbUrl = post.data.thumbnail_video | youtubeThumbnailUrl %}
 	{%- endif %}
