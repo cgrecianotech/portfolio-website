@@ -240,7 +240,7 @@ iframe {
     display: flex;
     padding: 50px;
     background-color: var(--container-background-color);
-    margin: 20px auto;
+    margin: 5px auto;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     max-width: min(1200px, 95vw);
