@@ -9,7 +9,7 @@
 		{#- Favicon / browser tab icon #}
 		<link rel="icon" type="image/png" href="/images/cgreciano_favicon.png">
 		<link rel="shortcut icon" type="image/png" href="/images/cgreciano_favicon.png">
-		
+
 		{#- RSS Feed #}
 		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
 
@@ -56,7 +56,7 @@
 				Built with <a href="https://www.11ty.dev/">{{ eleventy.generator }}</a>
 			</p>
 			<p>
-				Copyright &copy; 2024-2025 {{ metadata.author.name }}. All rights reserved.
+				Copyright &copy; 2024-2026 {{ metadata.author.name }}. All rights reserved.
 			</p>
 		</footer>
 
@@ -64,14 +64,14 @@
 
 		{#- Add the JavaScript bundle to the page #}
 		<script type="module" src="{% getBundleFileUrl "js" %}"></script>
-		
+
 		{#- Theme toggle functionality: Dark/Light mode #}
 		<script>
 			(function() {
 				const themeToggle = document.getElementById('theme-toggle');
 				const themeToggleIcon = document.querySelector('.theme-toggle-icon');
 				const html = document.documentElement;
-				
+
 				// Check for saved theme preference or use device preference as default
 				function getPreferredTheme() {
 					const savedTheme = localStorage.getItem('theme');
@@ -84,21 +84,21 @@
 					}
 					return 'light';
 				}
-				
+
 				const currentTheme = getPreferredTheme();
 				html.setAttribute('data-theme', currentTheme);
 				updateThemeIcon(currentTheme);
-				
+
 				// Toggle theme on button click
 				themeToggle.addEventListener('click', () => {
 					const currentTheme = html.getAttribute('data-theme');
 					const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-					
+
 					html.setAttribute('data-theme', newTheme);
 					localStorage.setItem('theme', newTheme);
 					updateThemeIcon(newTheme);
 				});
-				
+
 				function updateThemeIcon(theme) {
 					if (theme === 'dark') {
 						themeToggleIcon.textContent = '☀️';
@@ -124,38 +124,38 @@
 
 		{#- Analytics:Simple Analytics #}
 		<script data-collect-dnt="true" async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
-		
+
 		{#- Footer visibility control #}
 		<script>
 			(function() {
 				const footer = document.querySelector('footer');
 				let ticking = false;
-				
+
 				function updateFooterVisibility() {
 					const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 					const windowHeight = window.innerHeight;
 					const documentHeight = document.documentElement.scrollHeight;
-					
+
 					// Show footer when user has scrolled to near the bottom (within 100px)
 					if (scrollTop + windowHeight >= documentHeight - 100) {
 						footer.classList.add('visible');
 					} else {
 						footer.classList.remove('visible');
 					}
-					
+
 					ticking = false;
 				}
-				
+
 				function requestTick() {
 					if (!ticking) {
 						requestAnimationFrame(updateFooterVisibility);
 						ticking = true;
 					}
 				}
-				
+
 				// Listen for scroll events
 				window.addEventListener('scroll', requestTick);
-				
+
 				// Check initial state
 				updateFooterVisibility();
 			})();
