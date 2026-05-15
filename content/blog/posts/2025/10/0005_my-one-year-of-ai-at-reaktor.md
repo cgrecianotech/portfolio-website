@@ -46,6 +46,6 @@ Was it all worth it? I do think so, as adding "AI" to my job title in LinkedIn h
 	- [My flashcards for AWS AIF-C01 and MLA-C01](https://www.christiangreciano.com/flashcards.html)
 - Two client gigs on AI projects (RAG chatbots)
 - Member of Reaktor's GenAI team
-	- [Wrote a summary of the HARVEST event in Reaktor's official blog](https://www.christiangreciano.com/flashcards.html)
+	- [Wrote a summary of the HARVEST event in Reaktor's official blog](https://www.fusion-ecosystem.com/harvest-event-summary/)
 	- Trained dev teams on AI developer tools for [University of Helsinki's research in collaboration with Reaktor](https://www.helsinki.fi/en/news/artificial-intelligence/reaktor-and-university-helsinki-launch-pioneering-research-genais-impact-software-development-productivity)
 	- Organized internal and external AI events
