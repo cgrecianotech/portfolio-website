@@ -2,7 +2,7 @@
 title: I met my first work colleague in Finland F2F for the first time
 description: I moved to Finland 5 years ago, during the Covid pandemic. Due to circumstances, I had never met F2F with my first work colleague (Juho)... until today, when we had lunch together. Life is funny sometimes.
 date: 2026-06-18
-tags: ["Tech Career", "Networking", "Consulting"]
+tags: ["Tech Career", "Networking", "Consulting", "LinkedIn"]
 draft: false
 thumbnail_image: "0024_tn_met-my-first-work-colleague-in-finland-f2f.png"
 ---
