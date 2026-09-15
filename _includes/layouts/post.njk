@@ -25,6 +25,10 @@ layout: layouts/blog.njk
 
 {{ content | safe }}
 
+<div class="post-feedback-container">
+	<p>Was this blog post helpful or relatable? Let's talk about it! Send me an email to <strong>contact(at)christiangreciano.com</strong> and I'll love to interact with you, since I'm always looking for meaningful conversations.</p>
+</div>
+
 {%- if collections.posts %}
 {%- set previousPost = collections.posts | getPreviousCollectionItem %}
 {%- set nextPost = collections.posts | getNextCollectionItem %}

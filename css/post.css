@@ -1,0 +1,11 @@
+.post-feedback-container {
+    background-color: var(--container-background-color);
+    padding: 20px 25px;
+    margin: 30px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.post-feedback-container p {
+    margin: 0;
+}

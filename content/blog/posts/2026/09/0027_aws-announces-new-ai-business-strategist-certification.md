@@ -1,0 +1,34 @@
+---
+title: New AWS AI Business Strategist (AIB-C01) certification announced, it's NONSENSE!!
+description: What is AWS thinking with their new AI Business Strategist (AIB-C01) certification? It does NOT test you on AWS services knowledge! AWS is not the vendor for this domain, and I just have to rant about it!
+date: 2026-09-14
+tags: ["AI", "AWS Certifications", "Business", "Nonsense"]
+thumbnail_image: '0027_tn_aws-announces-aib-cert.png'
+---
+https://youtu.be/A7U8EkTFh18
+
+AWS just announced a new certification: [AWS Certified AI Business Strategist](https://aws.amazon.com/certification/certified-ai-business-strategist/) (code: AWS AIB-C01). Significantly, this new cert does NOT fit any of the three tiers that AWS currently has for their certs (Foundational, Associate, and Professional), but a new tier has been created to accommodate this cert: the "Business" tier. [Here](https://aws.amazon.com/blogs/training-and-certification/introducing-aws-certified-ai-business-strategist-built-for-the-people-who-scale-ai/) is the link to the official announcement. I have lots of concerns about this certification, as you'll see.
+
+About a year ago, AWS announced another AI cert, the AWS Certified Generative AI Developer — Professional (AWS AIP-C01), and I also wrote a [blog post](https://www.christiangreciano.com/blog/posts/2025/10/0006_aws-announces-new-genai-developer-professional-certification/) about it. I was initially skeptical about that cert for several reasons, but once I prepared and took the exam, I changed my mind: I now think AIP-C01 is a valuable cert with the cutting-edge topics it covers, and I have applied plenty of what that certification covers in my day-to-day job. This time, however, I'm not only skeptical but also **very** pessimistic that I will change my view on this new cert. I honestly believe it's non-sensical and a slippery slope for the AWS certifications trend.
+
+## AI Business Strategy is an important domain...
+First things first, the AI Business Strategy domain **IS** really important, don't get me wrong! In the past few years, I have seen AI projects and initiatives fail in companies because they hired AI engineers straight away without verifying if their AI business strategy made sense in the first place. I was an AI engineer in one of those uncomfortable scenarios, so I know what I'm talking about by experience! Hence, I fully advocate for an AI business strategist to help a company understand how they can create business value through AI with the budget, time, and effort they're willing to invest. In fact, in [another recent blog post](https://www.christiangreciano.com/blog/posts/2026/05/0021_the-wild-west-of-corporate-ai-roles/) of mine, I listed AI strategist as one of the important roles in the AI domain: an AI engineer is the technical builder role, and an AI strategist is the human communicator role (not necessarily technical).
+
+But you know what else is needed to make software projects succeed in a company apart from engineering? Tons of other non-technical domains! Sales, recruitment, marketing, human resources... So why should AI strategy, which is non-technical, be placed on a pedestal above these other domains? Is it because it's related to AI? Because we can also start hyping the other domains: AI sales, AI marketing, AI human resources (gotta love this last oxymoron! 🤣).
+
+## ...but AWS is not the vendor who should certify you in it!
+What does AWS stand for? Amazon Web Services. But AWS themselves have said that this new AIB certifications will **NOT** test you on your knowledge of AWS services! Sorry, what? 🤣 That has **always** been the point of AWS certifications! AWS even have the foundational-level certs (Cloud Practitioner and AI Practitioner) which are quite easy and aimed at non-technical folks who want to have a minimum understanding of the tech jargon that AWS provides. So do non-tech folks find even the AI Practitioner certification **that** difficult that AWS needs to create a **cloud-vendor-agnostic** (🤣) certification? Yikes!
+
+Amazon obviously wants that easy money and to compete with the likes of Anthropic (who have an equivalent certification, the [Claude Certified Associate — Foundations](https://anthropic-partners.skilljar.com/claude-certified-associate-foundations-certification)). But it's just that AWS is not (and **SHOULD NOT**) be the vendor certifying people in this domain! Why should I trust AWS, who are a cloud vendor, over Anthropic, who are an AI vendor? This also sets the precedent of creating other non-sensical AWS certs in the "Business" tier. What's next? AWS Certified Recruiter? AWS Certified Online Marketer? AWS Certified Chief Executive Officer? AWS Certified LinkedIn Thought Leader?
+
+<img src="{{ '0027_aws-imaginary-nonsense-business-certs.png' | blogImagePath }}" alt="Parody logos of fake nonsensical AWS business certs (Recruiter, Online Marketer, CEO, LinkedIn thought leader)" eleventy:ignore>
+
+Not to mention that this is **also** a bad precedent for the non-tech people who get this cert and nothing else. Do we really want to credit people with being specialized in AI when they don't know the fundamentals of AI technologies? Do you want your AI project manager to be unaware of the difference between training and inference? Of why data quality is important? Of the limitations of an LLM? Of the difference between deterministic code output and stochastic AI output? 🙄
+
+## Why I STILL will take this certification ^^U 
+So with all the negativity I just spouted it's obvious that I personally will... still take this certification. 😅🤣 "Wait, what?" Yes, I admit this sounds silly. But I believe I am in a niche situation most people are not in, and I have my reasons:
+- I'm **genuinely interested** in the AI business strategy domain (even if AWS shouldn't certify people in it). I want to be able to better communicate with people in that domain. So this cert and Anthropic's cert can probably teach me a few things.
+- **My employer pays me** a monetary bonus for each cert I get. And the cert looks really easy, easier probably than the foundational-level ones. So, **easy money** for me?
+- **I have the AWS Golden Jacket** on my radar (given to people who have all AWS certs active). Not rushing towards it, but on my radar. This is also an annoying effect of this "Business" cert and whatever others come later: do tech folks like me need to get these silly certs to still apply for the AWS Golden Jacket? 🤦
+
+In conclusion, do I recommend this cert? Heck no! Get the Anthropic equivalent, or the equivalent from a real AI vendor instead, if you're interested. But who knows? Maybe I will change my mind once I take it. I seriously doubt it though. 😂 Will **YOU** also be taking this cert and contributing to Amazon's latest cash grab? 🤣 Reach out and connect to rant!
