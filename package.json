@@ -11,7 +11,8 @@
 		"debug": "cross-env DEBUG=Eleventy* npx @11ty/eleventy",
 		"debugstart": "cross-env DEBUG=Eleventy* npx @11ty/eleventy --serve --quiet",
 		"benchmark": "cross-env DEBUG=Eleventy:Benchmark* npx @11ty/eleventy",
-		"add-blog-thumbnails": "node scripts/add-blog-thumbnails.mjs"
+		"add-blog-thumbnails": "node scripts/add-blog-thumbnails.mjs",
+		"replace-blog-tag": "node scripts/replace-blog-tag.mjs"
 	},
 	"repository": {
 		"type": "git",
