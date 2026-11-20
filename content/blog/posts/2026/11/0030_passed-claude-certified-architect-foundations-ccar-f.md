@@ -1,0 +1,29 @@
+---
+title: I passed Claude Certified Architect - Foundations (CCAR-F)
+description: I just passed my second Anthropic cert, the CCAR-F. It felt harder than the previous CCDV-F, but I still succeeded with minimal prep. This was also the first cert I ever took via online proctoring.
+date: 2026-11-20
+tags: ["AI", "Anthropic Certifications", "Exam Prep"]
+thumbnail_image: '0030_tn_ccar-f_badge-wide.png'
+---
+<img src="{{ '0030_tn_ccar-f_badge.png' | blogImagePath }}" alt="The CCAR-F official badge image" width="240" eleventy:ignore>
+
+I just [passed](https://www.credly.com/badges/69a51679-95d6-4ae6-8bc0-009020eafcc4/) the Claude Certified Architect - Foundations (CCAR-F)! 🎉 This is the second Anthropic certification I pass. Once again I thank my employer Nitor for being able to take this, since only Anthropic partners can currently take Anthropic cert exams. Nitor employees (and I assume other partners) can actually take these certifications completely **for free** until 30th November, so I'm on a cert spree right now, hoping to take the remaining ones soon!
+
+## More Difficult than the CCDV-F
+In a [previous blog post](https://christiangreciano.com/blog/posts/2026/10/0028_passed-claude-certified-developer-foundations-ccdv-f/) I wrote how the Claude Certified Developer - Foundations (CCDV-F) felt really easy to me. Well, this CCAR-F was definitely more difficult. Not extremely so, but notably so: the questions were longer (and thus took longer to parse), some questions tested you on deeper nuances, and in general the scenarios were slightly more complex. Whereas in CCDV-F I had 40 minutes to spare, I barely had 4 minutes to spare in this CCAR-F exam, it was draining! The **Anthropic SDK** featured much more prominently, and having actual experience **building** AI agents really pays off. If you only have experience **using** AI agents and not building them, I recommend you study harder for this exam, because your experience might not be enough.
+
+<img src="{{ '0030_ccar-f-score-report.png' | blogImagePath }}" alt="My Score Report for the CCAR-F exam" eleventy:ignore>
+
+Once again, I only used [Matthew Purcell's free practice exam](https://www.linkedin.com/posts/purcellmatthew_ccar-f-practice-exam-questions-v2-ugcPost-7491707994921938944-FhH5) to prepare for this exam. I did not take a single lesson from Anthropic's courses, although I might have benefitted from taking one on the more obscure parts of the Anthropic SDK. I must say, this time I do feel that Purcell's exam did not *quite* reflect the difficulty of the actual exam. It was useful preparation for sure, and gave you a good impression of what the exam looked like, but I'd say that 50% of the questions in the exam were about the same difficulty as Purcell's exam, whereas 50% of the questions were longer and thus more difficult. So be aware. I will say, his [cheatsheet](https://www.linkedin.com/posts/purcellmatthew_ccar-f-exam-quick-reference-ugcPost-7491711563893039104-Q1VM) on the things you need to know by heart was very useful (thankfully I already knew like 80% of those things due to my day-to-day job). And it still felt like enough prep, given that I scored 914/1000. 😄
+
+## First time doing Online Proctoring
+I mentioned in the CCDV-F blog post that I was considering trying out the online proctoring route. Until now I have always taken the cert exams in a test center, because you need to take care of less things. But I wanted to try out online proctoring, since it gives me more **flexibility** on the exam time. And now that I have tried it out, I think I will default to online proctoring any time the cert exam is **2 hours long or less**. If it's longer, I will still go to a test center, because the stakes are probably higher and, well, I need to be able to take toilet breaks! 😅
+
+I asked Nitor to loan me a dummy laptop that I can use for OnVUE cert exams. They gave me a completely empty Lenovo Thinkpad. I haven't used one since before Covid times. I had to install Windows 11 on this machine, and my goodness I was reminded how annoying Windows is! 😂 Nowadays you must login online with a Microsoft account to even use the Windows OS??? 😠 What a pain in the rear! And it's not that easy to create a brand new Microsoft account while onboarding to the Windows OS either, I haven't been able to make the Microsoft PIN work yet for logging in! 🤦 
+
+Anyway, installing the OnVUE ~~spyware~~ software was more straight forward, and thankfully I passed all the system checks without problem. At Nitor's office I was able to book a small room for myself and nobody interrupted me during the exam (I did pin a very prominent "DO NOT DISTURB" sign on the door 😁). The initial checks for the exam went well, taking pictures of the room was no biggie, and they didn't make me wait much to start the exam. I never heard a proctor nor read what they wrote, I believe these days PearsonVUE is doing a lot of proctoring via AI to facilitate the process. If that's the case, they probably have some Computer Vision algorithms in place to detect that you never stop looking at the screen nor do anything shady. That's my guess.
+
+## What's Next?
+As mentioned, Nitor employees can take Anthropic certs **for free** until 30th November. Expect new blog posts soon reporting on me taking (and hopefully passing!) the rest of the Anthropic certs! 😄 It's cert hunting time! Once I have them all, I think I will make a blog post and video on my impressions of all the Anthropic certs. So far, I feel both CCDV-F and CCAR-F are interesting certifications that test practical knowledge, even if they're quite easy (especially CCDV-F). Anyway, apparently Anthropic certs are on very high demand, despite only Anthropic partners being able to take them! So I'll certainly publish more of my thoughts in the future!
+
+Are you preparing to take or have already taken Anthropic certifications? Are your impressions similar to mine, or do we diverge? Let me know!
